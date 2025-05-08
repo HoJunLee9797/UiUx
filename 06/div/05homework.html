@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        width: 600px;
+        margin: 0 auto;
+    }
+    h2 {
+        margin-top: 30px;
+    }
+    label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+    input, select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+    .checkbox-group {
+        margin: 10px 0;
+    }
+    .checkbox-group label {
+        display: inline;
+        margin-right: 10px;
+    }
+    .btn-submit {
+        background-color: orange;
+        color: white;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .login-section {
+        margin-top: 50px;
+        border-top: 1px solid #ccc;
+        padding-top: 30px;
+    }
+    .login-box {
+        margin-top: 20px;
+    }
+    .login-box input {
+        width: 70%;
+        display: inline-block;
+    }
+    .login-box button {
+        width: 25%;
+        padding: 8px;
+    }
+</style>
+</head>
+<body>
+  <h2>회원가입</h2>
+
+  <form>
+      
+      <label>아이디</label>
+      <input type="text" name="userid">
+
+      <label>비밀번호</label>
+      <input type="password" name="password">
+
+      <label>비밀번호 확인</label>
+      <input type="password" name="confirm_password">
+
+      <label>이름</label>
+      <input type="text" name="username">
+
+      <label>이메일</label>
+      <div style="display: flex; gap: 10px;">
+          <input type="text" style="flex: 1;">
+          <select style="flex: 1;">
+              <option>이메일 주소 선택</option>
+          </select>
+      </div>
+
+ 
+      <div class="checkbox-group">
+          <label><input type="checkbox"> 만 14세 이상입니다.</label><br>
+          <label><input type="checkbox"> 이용약관 동의</label><br>
+          <label><input type="checkbox"> 개인정보 수집 및 이용 동의</label>
+      </div>
+
+   
+      <h4>생년월일</h4>
+      <div style="display: flex; gap: 10px;">
+          <select><option>년도</option></select>
+          <select><option>월</option></select>
+          <select><option>일</option></select>
+      </div>
+
+      <h4>성별</h4>
+      <label><input type="radio" name="gender"> 남자</label>
+      <label><input type="radio" name="gender"> 여자</label>
+
+      <div class="checkbox-group">
+          <label><input type="checkbox"> 전체동의</label><br>
+          <label><input type="checkbox"> 생년월일과 성별 수집 이용 동의</label><br>
+          <label><input type="checkbox"> 이메일 마케팅 수신 동의</label><br>
+          <label><input type="checkbox"> 개인정보 유효기간 1년 저장</label>
+      </div>
+
+      <button class="btn-submit">회원가입하기</button>
+  </form>
+
+  <!-- 로그인 -->
+  <div class="login-section">
+      <h2>로그인</h2>
+      <form class="login-box">
+          <label>아이디</label>
+          <input type="text" name="login_id">
+          <br>
+          <label>비밀번호</label>
+          <input type="password" name="login_pw">
+          <br>
+          <label><input type="checkbox"> 아이디 저장</label>
+          <label><input type="checkbox"> 키보드 보안</label>
+          <br><br>
+          <button type="submit">LOGIN</button>
+      </form>
+  </div>
+</body>
+</html>
