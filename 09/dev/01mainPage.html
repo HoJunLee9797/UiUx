@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    *{
+      margin:0;
+      box-sizing: border-box;
+    }
+    .wrap{
+      width: 1200px;
+      height: 100vh;
+      margin: 0 auto;
+      border:1px solid black;
+      padding: 10px 10px;
+    }
+    
+    p{
+      text-align: center;
+    }
+    header{
+      width:100%;
+      height: 100px;
+      border: 1px dotted black;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items:center;
+      
+    }
+    form{
+      background-color: white;
+      width:300px;
+      padding: 5px;
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    form > input.search{
+      border:none;
+      outline: none;
+    }
+    form > i{
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    nav{
+      width: 100%;
+      height: 40px;
+      border: 1px solid black;
+      margin-bottom: 10px 
+    }
+    main{
+      width: 100%;
+    
+      border: 1px solid rgb(111, 164, 233);
+      margin-bottom: 10px; 
+      padding: 10px;
+    }
+
+   
+
+    .main-section1 {
+      width: 100%;
+      border: 1px solid black;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction:row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+    }
+    .main-section1 > article{
+      width: 49.2%;
+      height: 100px;
+      border: 1px solid black;
+
+    }
+
+    .main-section2 {
+      width: 100%;
+      height: 230px;
+      border: 1px solid black;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
+    .main-section2 > article,.main-section2 > aside{
+      width: 49.2%;
+      height: 200px;
+      border: 1px solid black;
+
+    }
+
+    .main-section2 > aside > article:first-child{
+
+    }
+    .main-section2 > aside > article:last-child{
+
+}
+
+    .advert{
+      width:100%;
+      border: 3px dotted rgb(red, green, blue);
+    }
+    .advert>.main-section1{
+      display: flex;
+      justify-content: space-between;
+      align-items:center;
+      padding:5px;
+    }
+    .advert> .advert-footer{
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 5px;
+    }
+
+
+    footer
+    {
+      width: 100%;
+      height: 200px;
+      border: 1px solid black ;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header><p> &lt;header&gt;</p></header>
+    <form method='get' action="#">
+      <input type='search' name='search' placeholder='search...'>
+      <input type="image" src="" alt="" onclick="">
+    </form>
+    <nav><p> &lt;nav&gt;</p></nav>
+    <main>
+      <p> &lt;main&gt;</p>
+     <section class="main-section1">
+      <article>
+        <p> &lt;article1&gt;</p>
+      </article>
+      <article>
+        <p> &lt;article2&gt;</p>
+      </article>
+
+     </section>
+     <section class="main-section2">
+     <article>
+      <p> &lt;article3&gt;</p>
+    </article>
+    <aside>
+      <p> &lt;aside&gt;</p>
+      <article>
+        <p> &lt;광고 아티클&gt;</p>
+      </article>
+      <article>
+        <p> &lt;광고 아티클2&gt;</p>
+        <div class="advert">
+          <h2>당일채취 당일발송 자연산 참두릅</h2>
+          <div class="advert-content">
+            <img src="./../../07/images/bear.jpg">
+            <p>당일채취 당일발송 자연산 곰돌이</p>
+          </div>
+          <div class="advert-footer">
+            <p>지리산</p>
+            <p>지금구매하기?</p>
+
+          </div>
+        </div>
+      </article>
+    </aside>
+  </section>
+    </main>
+    <footer><p> &lt;footer&gt;</p></footer>
+    
+  </div>
+</body>
+</html>
