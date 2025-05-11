@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>멜론 티켓 랭킹</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #222;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+nav ul li {
+  list-style: none;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+table.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ranking-table th, .ranking-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+}
+
+.ranking-table th {
+  background-color: #f5f5f5;
+}
+
+.concert-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.concert-info img {
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.text-info {
+  text-align: left;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #00c73c;
+  color: white;
+  font-size: 0.75em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.reserve-btn {
+  background-color: #00c73c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.reserve-btn:hover {
+  background-color: #009d2b;
+}
+</style>
+</head>
+<body>
+ <!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>멜론티켓 랭킹</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>멜론티켓</h1>
+    <nav>
+      <ul>
+        <li><a href="#">콘서트/페스티벌</a></li>
+        <li><a href="#">뮤지컬/연극</a></li>
+        <li><a href="#">전시/클래식</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>실시간 랭킹 - 2025.05.10 현재</h2>
+
+    <table class="ranking-table">
+      <thead>
+        <tr>
+          <th>랭킹</th>
+          <th>공연정보</th>
+          <th>공연일시</th>
+          <th>공연장소</th>
+          <th>예매</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="concert-info">
+            <img src="./image/rank1.png" >
+            <div class="text-info">
+              <span class="badge">콘서트/페스티벌</span>
+              <p class="title">2025 NCT DREAM TOUR 'THE DREAM SHOW 4'</p>
+            </div>
+          </td>
+          <td>2025.07.10 ~ 2025.07.12</td>
+          <td>고척스카이돔</td>
+          <td><button class="reserve-btn">예매하기</button></td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td>2</td>
+          <td class="concert-info">
+            <img src="./image/rank2.png" >
+            <div class="text-info">
+              <span class="badge">콘서트/페스티벌</span>
+              <p class="title">2025 DOH KYUNG SOO ASIA CONCERT TOUR 〈DO it! in Seoul〉</p>
+            </div>
+          </td>
+          <td>2025.07.19 ~ 2025.07.20</td>
+          <td>고려대학교 화정체육관</td>
+          <td><button class="reserve-btn">예매하기</button></td>
+        </tr>
+        
+      </tbody>
+      <tbody>
+        <tr>
+          <td>3</td>
+          <td class="concert-info">
+            <img src="./image/rank3.png" >
+            <div class="text-info">
+              <span class="badge">콘서트/페스티벌</span>
+              <p class="title">제18회 부산항축제 with MyK FESTA</p>
+            </div>
+          </td>
+          <td>2025.05.30</td>
+          <td>부산항국제여객터미널 야외주차장</td>
+          <td><button class="reserve-btn">예매하기</button></td>
+        </tr>
+       
+      </tbody>
+      <tbody>
+        <tr>
+          <td>4</td>
+          <td class="concert-info">
+            <img src="./image/rank4.png" >
+            <div class="text-info">
+              <span class="badge">콘서트/페스티벌</span>
+              <p class="title">제17회 서울재즈페스티벌 2025</p>
+            </div>
+          </td>
+          <td>2025.05.30 ~ 2025.06.01</td>
+          <td>올림픽공원</td>
+          <td><button class="reserve-btn">예매하기</button></td>
+        </tr>
+        
+      </tbody>
+      <tbody>
+        <tr>
+          <td>5</td>
+          <td class="concert-info">
+            <img src="./image/rank5.png" >
+            <div class="text-info">
+              <span class="badge">콘서트/페스티벌</span>
+              <p class="title">LET ME KNOW LIVE TOUR 2025 Nostalgic Modern Ⅲ in Seoul</p>
+            </div>
+          </td>
+          <td>2025.07.13</td>
+          <td>노들섬 라이브하우스</td>
+          <td><button class="reserve-btn">예매하기</button></td>
+        </tr>
+       
+      </tbody>
+      <tbody>
+        <tr>
+          <td>6</td>
+          <td class="concert-info">
+            <img src="./image/rank6.png" >
+            <div class="text-info">
+              <span class="badge">콘서트/페스티벌</span>
+              <p class="title">우리가 만든 음악섬</p>
+            </div>
+          </td>
+          <td>2025.05.30 ~ 2025.06.01</td>
+          <td>LG아트센터 서울 U+ 스테이지</td>
+          <td><button class="reserve-btn">예매하기</button></td>
+        </tr>
+        
+      </tbody>
+      <tbody>
+        <tr>
+          <td>7</td>
+          <td class="concert-info">
+            <img src="./image/rank7..png" >
+            <div class="text-info">
+              <span class="badge">콘서트/페스티벌</span>
+              <p class="title">AoB Presents #2 : GO..GO..GHOST?!</p>
+            </div>
+          </td>
+          <td>2025.05.27</td>
+          <td>KT&G 상상마당 라이브홀</td>
+          <td><button class="reserve-btn">예매하기</button></td>
+        </tr>
+      
+      </tbody>
+      <tbody>
+        <tr>
+          <td>8</td>
+          <td class="concert-info">
+            <img src="./image/rank8.png" >
+            <div class="text-info">
+              <span class="badge">콘서트/페스티벌</span>
+              <p class="title">2025 대구힙합페스티벌</p>
+            </div>
+          </td>
+          <td>2025.06.28 ~ 2025.06.29</td>
+          <td>대구 엑스코(EXCO) 동관 전시 4홀</td>
+          <td><button class="reserve-btn">예매하기</button></td>
+        </tr>
+       
+      </tbody>
+      <tbody>
+        <tr>
+          <td>9</td>
+          <td class="concert-info">
+            <img src="./image/rank9.png" >
+            <div class="text-info">
+              <span class="badge">콘서트/페스티벌</span>
+              <p class="title">워터밤 서울 2025 (WATERBOMB SEOUL 2025)</p>
+            </div>
+          </td>
+          <td>2025.07.04 ~ 2025.07.06</td>
+          <td>일산 킨텍스(KINTEX) 야외 글로벌 스테이지(KINTEX 제2전시장)</td>
+          <td><button class="reserve-btn">예매하기</button></td>
+        </tr>
+        
+      </tbody>
+      <tbody>
+        <tr>
+          <td>10</td>
+          <td class="concert-info">
+            <img src="./image/rank10.png" >
+            <div class="text-info">
+              <span class="badge">콘서트/페스티벌</span>
+              <p class="title">	장범준 금토일 공연 (Weekend Show)</p>
+            </div>
+          </td>
+          <td>2025.05.09~ 2025.06.15</td>
+          <td>LG아트센터 서울 U+ 스테이지	</td>
+          <td><button class="reserve-btn">예매하기</button></td>
+        </tr>
+       
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
+
+</body>
+</html>
