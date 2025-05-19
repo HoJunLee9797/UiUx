@@ -1,0 +1,1737 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>멜론 티켓</title>
+
+    <!-- 파비콘 -->
+    <link rel="shortcut icon" type="image/x-icon" href="https://cdnticket.melon.co.kr/resource/image/web/common/pc_32.ico" />
+
+    <!-- IOS용 -->
+    <link rel="apple-touch-icon-precomposed" href="https://cdnticket.melon.co.kr/resource/image/web/common/ios_120.png" />
+	<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://cdnticket.melon.co.kr/resource/image/web/common/ios_180.png" />
+
+    <meta name="viewport" content="width=1126"/><!-- 모바일 접속시 컨텐츠 넓이 -->
+    <meta name="keywords" content="티켓, 콘서트, 테마/지역, 랭킹, 티켓오픈소식, 이벤트, FouU, 마이티켓" />
+    <meta name="description" content="No.1 음악플랫폼 멜론에서 제공하는 공연 예매사이트. 콘서트, 팬미팅, 페스티벌, 추천공연 제공" />
+    <meta name="naver-site-verification" content="8912542fdfc7aaf11e289d8bed9e86892deef890"/>
+
+    <meta property="og:site_name" content="멜론티켓" />
+
+	<script src="/resource/script/web/common/jquery-3.6.0.min.js"></script>
+	<script src="/resource/script/web/common/jquery-migrate-3.3.2.min.js"></script>
+    <script src="/resource/script/web/common/jquery.inputmask.bundle.js"></script>
+    <script src="/resource/script/web/common/ui_script.js"></script>
+    <script src="/resource/script/web/common/melonweb_member_external.js?t=20220720"></script>
+    <script src="/resource/script/web/common/underscore.js"></script>
+    <script src="/resource/script/web/common/handlebars-v4.0.12.js"></script>
+
+    
+    <script type="text/javascript" src="https://cdnimg.melon.co.kr/static/web/resource/script/w1/zz/j/1o6z3dft8cp.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnticket.melon.co.kr/resource/style/web/common/common-f527383d8e.css" />
+<script src="/resource/script/phase/deployPhaseUtils.js"></script>
+<!-- 네이버 광고 로그분석 -->
+<!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 -->
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script>
+<script type="text/javascript">
+    // console.log("##########################################");
+    // console.log("##########################################");
+    // console.log("네이버 광고 로그 분석 공통 스크립트 실행");
+    // console.log("script_common.jsp");
+    // console.log("##########################################");
+    // console.log("##########################################");
+    if (!wcs_add) var wcs_add={};
+    wcs_add["wa"] = "s_585b06516861";
+    if (!_nasa) var _nasa={};
+    if(window.wcs){
+        wcs.inflow("melon.com");
+        wcs_do(_nasa);
+    }
+</script>
+<!-- END 네이버 광고 로그분석 -->
+<script type="text/javascript">
+
+        var NO_IMAGE_URL = 'https://cdnticket.melon.co.kr/resource/image/web/thumb/Noimage_%%W%%x%%H%%.png';
+        var NO_IMAGE_URL_ROUND = 'https://cdnticket.melon.co.kr/resource/image/web/thumb/Noimage_round_%%W%%.png';
+
+        //이미지 로딩 실패시 처리
+        function noImage(o, width, height)
+        {
+            var _NO_IMAGE_URL =  NO_IMAGE_URL.replace(/%%W%%/g, width).replace(/%%H%%/g, height);
+
+            o.src = _NO_IMAGE_URL;
+            o.width = width;
+            o.height = height;
+            o.onerror = null;
+        }
+
+
+        function noArtistImage(o, width, height)
+        {
+        	var _NO_IMAGE_URL_ROUND = NO_IMAGE_URL_ROUND.replace(/%%W%%/g, width);
+
+        	o.src = _NO_IMAGE_URL_ROUND;
+           // o.width = width;
+           // o.height = height;
+        	o.onerror = null;
+        }
+    </script>
+    <!-- 구매전환스크립트2-->
+<!-- Kakao Pixel Code -->
+    <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+    <script type="text/javascript">
+        kakaoPixel("1432956840521218273").pageView("WEB-공통");
+    </script>
+<!-- End Kakao Pixel Code -->
+</head>
+<body>
+<div id="wrap" class="index">  <!-- 이벤트일 경우 event_gnb 추가 -->
+    <div id="skip_nav">
+        <ul>
+            <li><a href="#gnb_menu">메뉴</a></li>
+            <li><a href="#conts_section">본문</a></li>
+            <li><a href="#footer">하단 정보</a></li>
+        </ul>
+    </div>
+
+	<div id="header">
+        <div id="header_wrap" class="pr_none">
+		<div id="gnb" class="clear_g">
+                <div id="util_menu">
+                    <p class="screen_out">상단 빠른 메뉴</p>
+                    <div class="top_left">
+                        <ul class="clear_g">
+                            <li><a href="//www.melon.com" class="btn_gnb btn_g_link1">멜론</a></li>
+                        </ul>
+                    </div>
+                    <div class="top_right">
+                        <ul class="clear_g">
+                            <li class="name" id="name_area"></li>
+                            <li><span id="login_area"></span></li>
+                            <li id="sub_area"></li>
+                            <li><a href="https://ticket.melon.com/customerservice/notice.htm" class="btn_gnb btn_g_customer">고객센터</a></li>
+                            <!-- 160511 이용안내 추가 --><li><a href="https://ticket.melon.com/customerservice/howto.htm" class="btn_gnb btn_g_howto">이용안내</a></li>
+                            <!-- 글로벌 링크 추가 -->
+                            <li class="global_link" >
+                            	<div id="ticket_global" onMouseOut="test();">
+                                    <div id="link00"><span>Language</span></div>
+                                    <div id="link01"><a href="//tkglobal.melon.com/main/index.htm?langCd=EN" target="_blank"><span>KOR</span></a></div>
+                                    <div id="link02"><a href="//tkglobal.melon.com/main/index.htm?langCd=CN" target="_blank"><span>JAP</span></a></div>
+                                    <div id="link03"><a href="//tkglobal.melon.com/main/index.htm?langCd=JP" target="_blank"><span>ENG</span></a></div>
+                                </div>
+                                <script>
+                                $("#ticket_global").hover(function(){
+                                    $("#link00").show();
+									$("#link01").show();
+									$("#link02").show();
+                                    $("#link03").show();
+                                    $("#ticket_global").css('border','solid 1px #b4b4b4');
+                                }, function(){
+									$("#link00").show();
+									$("#link01").hide();
+									$("#link02").hide();
+                                    $("#link03").hide();
+                                    $("#ticket_global").css('border','solid 1px #fff');
+                                });
+								
+                                $("#ticket_global > div").hover(function(){
+                                    $("#link00").attr("style","background: url(https://cdnticket.melon.co.kr/resource/image/web/common/top_ticket_global.png) no-repeat 0 -131px;");
+                                },function(){
+                                });
+								
+								function test(){
+									$("#link00").attr("style","width:100%;display:block;background-color:transparent;height:30px");
+								}
+                                </script>
+                            </li>
+                            <!-- //글로벌 링크 추가 -->
+                        </ul>
+                    </div>
+                </div>
+                <h1 id="logo"><a href="https://ticket.melon.com/"><img src="https://cdnticket.melon.co.kr/resource/image/web/common/logo.png" alt="Melon 티켓" /></a></h1>
+                <div class="srch_set">
+                    <fieldset>
+                        <legend>통합검색영역</legend>
+                        <input type="text" title="검색 입력 편집창"  name="" id="top_search" />
+                        <input type="hidden" id="searchValue">
+                        <input type="hidden" id="placeholderValue">
+                        <button type="button" class="btn_icon search_m" id="btn_top_search" title="검색" a_value=""><span class="btn_comm">검색</span></button>
+                    </fieldset>
+                </div>
+                <div class="cmn_banner" style="display: none;">
+                    <div class="gnb_banner_btn">
+                        <a href="" class="btn prev d_btn_ctrl" title="이전 이벤트 보기">이전 이벤트 보기</a>
+                        <a href="" class="btn next d_btn_ctrl" title="다음 이벤트 보기">다음 이벤트 보기</a>
+                    </div>
+                </div>
+            </div>
+
+<script type="text/javascript">
+    function displayLoginArea()
+    {
+        var _tgtDom = $("#login_area"), _appString = '';
+        _tgtDom.empty();
+        if(isMelonLogin()) {
+            _appString = '<a id="btnLogout" href="#" class="btn_gnb btn_g_logout">로그아웃</a>';
+            _appString = $(_appString);
+            _appString.on('click', function() {
+            	setCookie("coop","", -9999, "/", MELON.WEBSVC.POC.melonDomain); 
+            	setCookie("coop_funnel","", -9999, "/", MELON.WEBSVC.POC.melonDomain);
+                setCookie("corpCodeNo","", -9999, "/", MELON.WEBSVC.POC.melonDomain);   // 기업할인 삭제
+                preReservationCookieDel();  //선예매 인증 쿠키값 삭제
+                logout("", DeployPhaseUtils.convertUrl("http://ticket.melon.com"));
+            });
+            $("#sub_area").html('');
+            
+            //	kakao ID Display
+            if(getMemberType() != '1'){
+            	$("#name_area").html('<em>' + getDisplayId() + '</em> 님 반갑습니다!');
+            }else{
+            	$("#name_area").html('<span class="icon kakao">카카오계정</span><em>' + getDisplayId() + '</em> 님 반갑습니다!');
+            }
+            
+        }
+        else {
+	            _appString = '<a href="javascript:loginStrat();" class="btn_gnb btn_g_login">로그인</a>';
+            $("#sub_area").html('<a href="' + DeployPhaseUtils.convertUrl('https://member.melon.com/muid/family/ticket/join/web/stipulationagreement_inform.htm?cpId=') + melon.getPocId() + '" class="btn_gnb btn_g_join">회원가입</a>');
+            $("#name_area").html('');
+        }
+        _tgtDom.html(_appString);
+    }
+
+    /**
+     * 쿠키 키값 조회 함수
+     * @param cname
+     * @returns {string|[]}
+     */
+    function getCookieSearch(cname) {
+        var name = cname;
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        var cookieArray = [];
+
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') { //공백 제거
+                c = c.substring(1);
+            }
+
+            if (c.indexOf(name) == 0) {
+                var tempCookieVal = c;
+                var tempCookieKeyLen = tempCookieVal.indexOf("=");
+                var newCookieKey = c.substring(0, tempCookieKeyLen);
+
+                cookieArray.push(newCookieKey);
+            }
+        }
+
+        if (cookieArray.length <= 0) {
+            return "";
+        }
+
+        return cookieArray;
+    }
+
+    /**
+     * 쿠키값 삭제 함수
+     */
+    function preReservationCookieDel(){
+        try {
+
+            var cookieKeyArr = getCookieSearch("K_USERCOND_");
+
+            if( _.isArray(cookieKeyArr) ) {
+                _.each(cookieKeyArr,function(key,i){
+                    setCookie(key,"", -9999, "/", MELON.WEBSVC.POC.melonDomain);   // 선예매 인증 쿠키 삭제
+                });
+            }
+
+        } catch (e) {
+
+        }
+
+    }
+
+    function loginStrat(){
+    	setCookie("cbo","0", "", "/", MELON.WEBSVC.POC.melonDomain); 
+    	location.replace(DeployPhaseUtils.convertUrl("https://member.melon.com/muid/family/ticket/login/web/login_inform.htm?cpId=") + melon.getPocId() + "&returnPage=https://ticket.melon.com/main/readingGate.htm");
+    }
+    
+    function resetCookie(){
+		var referrer_domain = document.referrer;
+		
+		if(referrer_domain.indexOf("ticket.melon.com") == -1 && referrer_domain.indexOf("member.melon.com") == -1){
+        	setCookie("coop","", -9999, "/", MELON.WEBSVC.POC.melonDomain); 
+        	setCookie("coop_funnel","", -9999, "/", MELON.WEBSVC.POC.melonDomain); 
+        	setCookie("cbo","", -9999, "/", MELON.WEBSVC.POC.melonDomain); 
+		}
+    }
+    
+	$(document).ready(function(){
+	    //pocId 쿠키설정 실행
+	    try {
+	        melon.setPocId();
+	    } catch (e){
+	    }
+	    
+	    displayLoginArea();
+	    
+	    Search.init();
+
+
+        pushSearch();
+
+        $.ajax({
+            type : "GET",
+            url  : "/common/ajax/dealBanner.json",
+            async : false,
+            success : function(obj){
+                $.each(obj.dealAList, function(i, o) {
+                    $.each(o.imgList, function(j, img) {
+                        if(img.landingRefType == 'U'){
+                            var banner = '<a target=_blank href="'+img.landingRefValue+'" class="item"><img height="75" width="280" src="https://cdnticket.melon.co.kr/'+img.imgUrl+'" alt="" /></a>';
+                        } else {
+                            var banner = '<a href="#none" class="item" onclick="javascript:bannerLanding(\''+img.landingRefType+'\', \''+img.landingRefValue+'\')"><img height="75" width="280" src="https://cdnticket.melon.co.kr/'+img.imgUrl+'" alt="" /></a>';
+                        }
+                        $(".cmn_banner").prepend(banner);
+                    });
+                });
+                var showIndex = 0;
+                var cmnItem = $('#gnb .cmn_banner .item');
+                var showIndex = Math.floor(Math.random() * $(cmnItem).length);
+                var cmnBtn = $('#gnb .cmn_banner .gnb_banner_btn a');
+                var cmnBtnPrev = $('#gnb .cmn_banner .gnb_banner_btn .prev');
+                var cmnBtnNext = $('#gnb .cmn_banner .gnb_banner_btn .next');
+                $(cmnItem).hide();
+                $(cmnItem).eq(showIndex).show();
+                if(obj.dealAList.length != 0){
+                    $('#gnb .cmn_banner').show();
+                }
+                $(cmnBtn).hover(function(){
+                    $(this).addClass('hover')
+                    $(cmnBtn).mousedown(function(){$(this).addClass('active')});
+                    $(cmnBtn).mouseup(function(){$(this).removeClass('active')});
+                },function(){
+                    $(this).removeClass('hover').removeClass('active');
+                });
+                $(cmnBtnPrev).click(function(){
+                    var cmnBanLength = $(cmnItem).length - 1;
+                    if (showIndex == 0){
+                        $(cmnItem).hide();
+                        $(cmnItem).eq(cmnBanLength).show();
+                        showIndex = cmnBanLength;
+                    }else{
+                        $(cmnItem).hide();
+                        $(cmnItem).eq(showIndex-1).show();
+                        showIndex = showIndex - 1;
+                    }
+                    return false;
+                })
+                $(cmnBtnNext).click(function(){
+                    var cmnBanLength = $(cmnItem).length - 1;
+                    if (showIndex == cmnBanLength){
+                        $(cmnItem).hide();
+                        $(cmnItem).eq(0).show();
+                        showIndex = 0;
+                    }else{
+                        $(cmnItem).hide();
+                        $(cmnItem).eq(showIndex+1).show();
+                        showIndex = showIndex + 1;
+                    }
+                    return false;
+                })
+            },
+            error:function(e){
+                alert("요청사항을 처리중 오류가 발생했습니다.");
+            }
+        });
+
+
+	    
+	    resetCookie();
+	});
+	
+
+	var Search = {
+	    init : function() {
+	        var _this = this;
+	        // 검색 버튼 
+	        $('#btn_top_search').on('click', function(){
+	        	var _w = $('#top_search').val().trim();
+	        	var _d = $('#placeholderValue').val().trim(); //i9 대비
+	        	
+	        	 if( null === _w ||  1 > _w.length || _w == _d) {
+	        		 _w =   $('#searchValue').val().trim();
+	        	 }
+	        	
+	        	_this._search(_w);
+	        });
+	        
+	        // 검색어 입력칸
+	        $('#top_search').on('keydown', function(e) {
+	        	var _w = $('#top_search').val().trim();
+	        	
+	            // 입력박스 엔터처리
+	            if (13 === e.keyCode) {
+	                _this._search(_w);
+	            }
+	        });
+	    },
+	    
+	    _validate : function( pWord ) {
+	        if( null === pWord ||  1 > pWord.length ) {
+	            alert('검색어를 입력해 주세요.');
+	            return false;
+	        }
+            if (pWord.length > 150) {
+                alert("검색 가능한 최대 글자수를 초과하였습니다");
+                return false;
+            }
+	        return true;
+	    },
+	    
+	    _search : function( pWord ) {
+	        var _this = this;
+	        
+	        if( _this._validate(pWord) ) {
+	        	var pText = encodeURIComponent(pWord);
+	           location.href = 'https://ticket.melon.com/search/index.htm?q=' + pText;
+	        }
+	    }
+	};
+	
+	
+	function pushSearch(){
+		 
+	    $.ajax({
+		        type : "GET",
+		        url  : "/common/ajax/pushSearch.json",
+		        async : false,
+		        success : function(obj){
+		            $.each(obj.pushSearch, function(i, o) {
+
+						 $('#searchValue').val(o.KEYWORD_TEXT);
+						 $('#placeholderValue').val(o.DISP_TEXT);
+						 
+						$("#top_search").addClass("placeholder").attr('placeholder', o.DISP_TEXT).focus(function() {
+		            	        if(this.placeholder == o.DISP_TEXT) {
+		            	        	//this.removeClass("placeholder").val("");
+		            	        	$("#top_search").attr('placeholder', "");
+		            	        };
+		            	             $('#searchValue').val("");
+		            	   });
+		            });
+		        },
+		        error:function(e){
+		            alert("요청사항을 처리중 오류가 발생했습니다.");  
+		        }
+		   });
+		 
+		 
+	 };
+function openNewWin(url,options){
+    if(!options) options = '';
+    window.open(url,'',options);
+};
+</script>
+<div id="gnb_menu">
+                <ul class="list_gnb">
+                    <!-- <li class="nth1">
+                        <a href="https://ticket.melon.com/main/index.htm" class="btn_gnb_menu btn_gnb btn_g_menu01">홈</a>
+                    </li> -->
+                    <li class="nth2">
+						<a href="https://ticket.melon.com/concert/index.htm?genreType=GENRE_CON" class="btn_gnb_menu btn_gnb btn_g_menu02">콘서트</a>
+					</li>
+					<li class="nth3">
+						<a href="https://ticket.melon.com/concert/index.htm?genreType=GENRE_ART" class="btn_gnb_menu btn_gnb btn_g_menu03">뮤지컬/연극</a>
+					</li>
+                    <li class="nth12">
+                        <a href="https://ticket.melon.com/concert/index.htm?genreType=GENRE_FAN" class="btn_gnb_menu btn_gnb btn_g_menu12">팬클럽/팬미팅</a>
+                    </li>
+					<li class="nth10">
+						<a href="https://ticket.melon.com/concert/index.htm?genreType=GENRE_CLA" class="btn_gnb_menu btn_gnb btn_g_menu10">클래식</a>
+					</li>
+					<li class="nth11">
+						<a href="https://ticket.melon.com/concert/index.htm?genreType=GENRE_EXH" class="btn_gnb_menu btn_gnb btn_g_menu11">전시/행사</a>
+					</li>
+                    <li class="nth4">
+                        <a href="https://ticket.melon.com/region/index.htm" class="btn_gnb_menu btn_gnb btn_g_menu04">테마/지역</a>
+                    </li>
+                    <li class="nth5">
+                        <a href="https://ticket.melon.com/ranking/index.htm" class="btn_gnb_menu btn_gnb btn_g_menu05">랭킹</a>
+                    </li>
+                    <li class="nth6">
+                        <a href="https://ticket.melon.com/csoon/index.htm" class="btn_gnb_menu btn_gnb btn_g_menu06">티켓오픈소식</a>
+                    </li>
+                    <li class="nth7">
+                        <a href="https://ticket.melon.com/event/index.htm?mid=1" class="btn_gnb_menu btn_gnb btn_g_menu07">이벤트</a>
+                        <div class="lay_menu">
+                            <ul>
+                                <li><a href="https://ticket.melon.com/event/index.htm?mid=1" class="btn_gnb btn_g_menu0701">전체이벤트</a></li>
+                                <li><a href="https://ticket.melon.com/event/announced.htm?mid=3" class="btn_gnb btn_g_menu0703">당첨자발표</a></li>
+                                <li><a href="https://ticket.melon.com/event/my.htm?mid=4" class="btn_gnb btn_g_menu0704">참여이벤트</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- <li class="nth8">
+                        <a href="https://ticket.melon.com/foru/index.htm" class="btn_gnb_menu btn_gnb btn_g_menu08">For U</a>
+                    </li> -->
+                    <li class="nth9">
+                        <a href="https://ticket.melon.com/myticket/index.htm" class="btn_gnb_menu btn_gnb btn_g_menu09">마이티켓</a>
+                        <div class="lay_menu">
+                            <ul>
+                                <li><a href="https://ticket.melon.com/myticket/index.htm" class="btn_gnb btn_g_menu0901">마이티켓홈</a></li>
+                                <li><a href="https://ticket.melon.com/myticket/rsrvList.htm" class="btn_gnb btn_g_menu0902">예매확인/취소</a></li>
+                                <li><a href="https://ticket.melon.com/myticket/coupon.htm" class="btn_gnb btn_g_menu0903">할인쿠폰</a></li>
+                                <li><a href="https://ticket.melon.com/myticket/advtkList.htm" class="btn_gnb btn_g_menu0904">공연예매권</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div></div>
+	</div>
+
+	<div id="cont_wrap" class="clear_g">
+    <div class="wrap_main_slider">
+        <div id="slider">
+            <a href="#" class="prev"><span class="btn_comm btn_mslider_prev">이전</span></a>
+            <div class="slider_inner">
+                <ul class="list_slider" id="sliderInner">
+
+                    <li>
+                    <a href="/performance/index.htm?prodId=211353">
+                    <span class="thumb">
+                                <span class="thumb_off">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/202505081400007b06e9db-b252-40bc-ba8b-5a51f150fbd6.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                <span class="frame"></span>
+                                </span>
+                                <span class="thumb_on">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/202505081401091c4f0b57-e612-4e19-a534-d67a076a1a63.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                    <span class="frame"></span>
+                                </span>
+                            </span>
+                            <span class="txt">
+                            <span class="name">토스, 머니 코드 콘서트 : Out of 방구석</span>
+                                <span class="opt">라인업 확인</span>
+                            </span>
+                            <span class="txt txt_hover">
+                            <span class="name">토스, 머니 코드 콘서트 : Out of 방구석</span>
+                                <span class="day">2025.05.31 - 2025.05.31</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="/performance/index.htm?prodId=211358">
+                    <span class="thumb">
+                                <span class="thumb_off">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/202505081101391346b837-bde3-4cc7-8965-5c5c1caf33e4.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                <span class="frame"></span>
+                                </span>
+                                <span class="thumb_on">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/2025050811015443558a61-18f9-42c7-9447-254cba8bcf39.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                    <span class="frame"></span>
+                                </span>
+                            </span>
+                            <span class="txt">
+                            <span class="name">2025 NCT DREAM TOUR</span>
+                                <span class="opt">〈THE DREAM SHOW 4 : DREAM THE FUTURE〉</span>
+                            </span>
+                            <span class="txt txt_hover">
+                            <span class="name">2025 NCT DREAM TOUR 〈THE DREAM SHOW 4 : DREAM THE FUTURE〉</span>
+                                <span class="day">2025.07.10 - 2025.07.12</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="/performance/index.htm?prodId=211297">
+                    <span class="thumb">
+                                <span class="thumb_off">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/202504231208084b1e1128-b112-4e83-b593-dd0f34e70246.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                <span class="frame"></span>
+                                </span>
+                                <span class="thumb_on">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/20250423120927e1b04aa6-b662-4ce7-adef-840fd4f75e0c.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                    <span class="frame"></span>
+                                </span>
+                            </span>
+                            <span class="txt">
+                            <span class="name">뮤지컬 〈멤피스〉</span>
+                                <span class="opt">박강현 고은성 정택운 이창섭</span>
+                            </span>
+                            <span class="txt txt_hover">
+                            <span class="name">뮤지컬 〈멤피스〉</span>
+                                <span class="day">2025.06.17 - 2025.09.21</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="/performance/index.htm?prodId=211336">
+                    <span class="thumb">
+                                <span class="thumb_off">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/20250428151408f9201574-057e-4632-a17e-cbd5c48beae1.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                <span class="frame"></span>
+                                </span>
+                                <span class="thumb_on">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/20250428151449960e5c8e-c3b4-40df-b884-f69ab30355ac.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                    <span class="frame"></span>
+                                </span>
+                            </span>
+                            <span class="txt">
+                            <span class="name">뮤지컬 〈프리다〉</span>
+                                <span class="opt">김소향, 김지우, 김히어라, 정유지</span>
+                            </span>
+                            <span class="txt txt_hover">
+                            <span class="name">뮤지컬 〈프리다〉</span>
+                                <span class="day">2025.06.17 - 2025.09.07</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="/performance/index.htm?prodId=211080">
+                    <span class="thumb">
+                                <span class="thumb_off">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/2025042410575376cd93e3-3e91-4c64-bd73-f212b578edf5.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                <span class="frame"></span>
+                                </span>
+                                <span class="thumb_on">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/202504241058086945d6f9-305d-47a6-8458-cc076a0cd4c7.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                    <span class="frame"></span>
+                                </span>
+                            </span>
+                            <span class="txt">
+                            <span class="name">제17회 서울재즈페스티벌 2025</span>
+                                <span class="opt">최종 라인업 확인</span>
+                            </span>
+                            <span class="txt txt_hover">
+                            <span class="name">제17회 서울재즈페스티벌 2025</span>
+                                <span class="day">2025.05.30 - 2025.06.01</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="/performance/index.htm?prodId=211366">
+                    <span class="thumb">
+                                <span class="thumb_off">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/202505071111089cc40931-975a-408c-8ed7-4d463cc82726.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                <span class="frame"></span>
+                                </span>
+                                <span class="thumb_on">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/20250507111152b781ad4b-96d7-4ae2-87fe-97dabc7a6aa3.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                    <span class="frame"></span>
+                                </span>
+                            </span>
+                            <span class="txt">
+                            <span class="name">제18회 부산항 축제 with MyK FESTA</span>
+                                <span class="opt">슈퍼주니어 l 씨엔블루 l ITZY 등</span>
+                            </span>
+                            <span class="txt txt_hover">
+                            <span class="name">제18회 부산항축제 with MyK FESTA</span>
+                                <span class="day">2025.05.30 - 2025.05.30</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="/performance/index.htm?prodId=211331">
+                    <span class="thumb">
+                                <span class="thumb_off">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/202505071121105bc6027b-9356-4238-80ec-763f1daceff0.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                <span class="frame"></span>
+                                </span>
+                                <span class="thumb_on">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/202505071121255ba7f90e-6593-47fc-ade9-de52e8f848f2.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                    <span class="frame"></span>
+                                </span>
+                            </span>
+                            <span class="txt">
+                            <span class="name">LET ME KNOW LIVE TOUR 2025</span>
+                                <span class="opt">두번째 내한 공연</span>
+                            </span>
+                            <span class="txt txt_hover">
+                            <span class="name">LET ME KNOW LIVE TOUR 2025 Nostalgic Modern Ⅲ in Seoul</span>
+                                <span class="day">2025.07.13 - 2025.07.13</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="https://ticket.melon.com/plan/index.htm?planId=100008"   >
+                    <span class="thumb">
+                                <span class="thumb_off">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2024/09/20240927160711e0aa0f62-28a1-4c61-bf25-41fc992691fe.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                <span class="frame"></span>
+                                </span>
+                                <span class="thumb_on">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2024/09/2024092716074892323005-fe18-4b3f-8fc9-adb93973ed53.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                    <span class="frame"></span>
+                                </span>
+                            </span>
+                            <span class="txt">
+                            <span class="name">이런 공연 어때?</span>
+                                <span class="opt">나만 알고 싶은 공연</span>
+                            </span>
+                            <span class="txt txt_hover">
+                            <span class="name">이런 공연 어때?</span>
+                                <span class="day">나만 알고 싶은 공연</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="/performance/index.htm?prodId=211313">
+                    <span class="thumb">
+                                <span class="thumb_off">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/20250507093753f19f0455-b00c-4609-bdd3-3eec5185da36.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                <span class="frame"></span>
+                                </span>
+                                <span class="thumb_on">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/202505070938037acff633-a13a-4318-b16b-9881a9f5c986.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                    <span class="frame"></span>
+                                </span>
+                            </span>
+                            <span class="txt">
+                            <span class="name">2025 부산원아시아페스티벌(BOF)</span>
+                                <span class="opt">5.16(금) 저녁 8시, 2차 티켓 오픈</span>
+                            </span>
+                            <span class="txt txt_hover">
+                            <span class="name">2025 부산원아시아페스티벌(BOF)</span>
+                                <span class="day">2025.06.11 - 2025.06.13</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="https://tktapi.melon.com/kmt/landing.json?type=plan&contId=100086"  target="_blank" >
+                    <span class="thumb">
+                                <span class="thumb_off">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2024/12/202412101654101a2a1c7c-a803-43c1-9742-820abffa7628.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                <span class="frame"></span>
+                                </span>
+                                <span class="thumb_on">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2024/12/20241210165434574684fb-e421-47ef-9a54-6591fb84d973.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                    <span class="frame"></span>
+                                </span>
+                            </span>
+                            <span class="txt">
+                            <span class="name">ROLLINGHALL</span>
+                                <span class="opt">30주년 기념 공연 모음</span>
+                            </span>
+                            <span class="txt txt_hover">
+                            <span class="name">ROLLINGHALL</span>
+                                <span class="day">30주년 기념 공연 모음</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="/performance/bridge.htm?brgId=100429">
+                    <span class="thumb">
+                                <span class="thumb_off">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/2025040417015243110600-769b-48f5-bb0c-2528fa90d23a.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                <span class="frame"></span>
+                                </span>
+                                <span class="thumb_on">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/20250404170155efedd9e0-0cfd-466f-b33f-28a9affb4cf8.png/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                    <span class="frame"></span>
+                                </span>
+                            </span>
+                            <span class="txt">
+                            <span class="name">뮤지컬 〈팬텀〉 10주년 기념 공연</span>
+                                <span class="opt">예매수수료 0원</span>
+                            </span>
+                            <span class="txt txt_hover">
+                            <span class="name">뮤지컬 〈팬텀〉 10주년 기념 공연</span>
+                                <span class="day">2025.05.31 - 2025.08.11</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="/performance/index.htm?prodId=211348">
+                    <span class="thumb">
+                                <span class="thumb_off">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/202505071106553b268281-62a8-4055-9198-1ca0c7e9f305.jpg/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                <span class="frame"></span>
+                                </span>
+                                <span class="thumb_on">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/2025050711071983c9a374-a366-451c-a389-05a0d0bb90c3.jpg/melon/resize/460x568/strip/true/quality/90/optimize" onerror="noImage(this, 256, 320)" alt="" />
+                                    <span class="frame"></span>
+                                </span>
+                            </span>
+                            <span class="txt">
+                            <span class="name">2025 DOH KYUNG SOO CONCERT</span>
+                                <span class="opt">〈DO it! in Seoul〉</span>
+                            </span>
+                            <span class="txt txt_hover">
+                            <span class="name">2025 DOH KYUNG SOO ASIA CONCERT TOUR 〈DO it! in Seoul〉</span>
+                                <span class="day">2025.07.19 - 2025.07.20</span>
+                            </span>
+                        </a>
+                    </li>
+                    </ul>
+            </div>
+            <a href="#" class="next"><span class="btn_comm btn_mslider_next">다음</span></a>
+            <a href="#" class="btn_comm btn_slider_play play">재생</a>
+            <a href="#" class="btn_comm btn_slider_stop stop">멈춤</a>
+        </div>
+    </div>
+<script type="text/javascript">
+functionMainRolling('slider', 'sliderInner', true , 3000); //메인 탑 롤링
+</script>
+    <div id="conts_section" class="pr_none">
+        <!-- contents -->
+        <div id="conts" class="clear_g">
+            <div class="wrap_main_performance">
+                <ul class="list_main_performance">
+                    <li id="offer_performance1" class="nth1">
+                        <h2 class="tit"><a href="#none" onclick="javascript:setOfferData('MAIN_B_CO_1');">페스티벌</a></h2>
+                        <div class="box_cont">
+                            <ul id="MAIN_B_CO_1">
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="offer_performance2" class="nth2">
+                        <h2 class="tit"><a href="#none" onclick="javascript:setOfferData('MAIN_B_CO_2');">NEW 공연</a></h2>
+                        <div class="box_cont">
+                            <ul id="MAIN_B_CO_2">
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="offer_performance3" class="nth3">
+                        <h2 class="tit"><a href="#none" onclick="javascript:setOfferData('MAIN_B_CO_3');">이 주의 공연</a></h2>
+                        <div class="box_cont">
+                            <ul id="MAIN_B_CO_3">
+
+                            </ul>
+                        </div>
+                    </li>
+                    </ul>
+<script type="text/javascript">
+tabSet(".list_main_performance", ".list_main_performance li .tit a");
+</script>
+            </div>
+            <div class="wrap_main_banner" id="cBanner">
+                    <a href="#" onclick="javascript:bannerLanding('U', 'https://ticket.melon.com/customerservice/noticeInform.htm?noticeNo=483&noticeHeaderCode=');" style="display:none;"><img width="100%" src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/01/20250107145012c9bcc115-e049-4661-965d-22ac4441750d.jpg" alt="멜론티켓 사칭 안내" /></a>
+<a href="#" onclick="javascript:bannerLanding('TD', '211291');" style="display:none;"><img width="100%" src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/20250507162249cdfadb73-664b-4398-8b72-339f57759bd6.png" alt="서사무엘" /></a>
+<a href="#" onclick="javascript:bannerLanding('U', 'https://ticket.melon.com/customerservice/noticeInform.htm?noticeNo=438&noticeHeaderCode=');" style="display:none;"><img width="100%" src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2024/04/202404251843317695b2cb-535a-4bea-9b40-c17ca770de24.png" alt="암표방지 캠페인" /></a>
+<a href="#" onclick="javascript:bannerLanding('BR', '100431');" style="display:none;"><img width="100%" src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/2025050716192988be51bc-1290-4a28-8b05-ab5cb077c828.png" alt="극동아시아타이거즈" /></a>
+</div>
+            <div class="wrap_main_float">
+                <div class="box_ticket_open">
+                    <h2 class="tit_main_float">티켓오픈소식</h2>
+                    <ul class="list_ticket_open">
+                    <li class="nth1">
+                        <a href="/csoon/detail.htm?csoonId=10337" class="inner inner_ico">
+                        <span class="ico"><span class="ico1">단독판매</span></span>
+                        <span class="txt">wowsanrecord 1st brand concert [울다가 웃으면] 티켓 오픈 안내</span>
+                        <span class="more">[오픈]25.05.12(월) 18:00</span>
+                                    </a>
+                        </li>
+                    <li class="nth2">
+                        <a href="/csoon/detail.htm?csoonId=10336" class="inner inner_ico">
+                        <span class="ico"><span class="ico1">단독판매</span></span>
+                        <span class="txt">2025 SF9 LIVE FANTASY #5 LOVE DAWN 티켓 오픈 안내</span>
+                        <span class="more">오픈일정 보기 &gt;</span>
+                            </a>
+                        </li>
+                    <li class="nth3">
+                        <a href="/csoon/detail.htm?csoonId=10338" class="inner inner_ico">
+                        <span class="ico"><span class="ico1">단독판매</span></span>
+                        <span class="txt">Paloalto 단독콘서트 ‘JAZZHOP’ : 롤링 30주년 기념 공연 티켓 오픈 안내</span>
+                        <span class="more">[오픈]25.05.16(금) 20:00</span>
+                                    </a>
+                        </li>
+                    <li class="nth4">
+                        <a href="/csoon/detail.htm?csoonId=10339" class="inner inner_ico">
+                        <span class="ico"><span class="ico1">단독판매</span></span>
+                        <span class="txt">제18회 부산항축제 with MyK FESTA 2차 티켓 오픈 안내</span>
+                        <span class="more">[오픈]25.05.21(수) 19:00</span>
+                                    </a>
+                        </li>
+                    </ul>
+                    <div class="ctr"><a href="/csoon/index.htm" class="ico_more">더보기</a></div>
+                </div>
+
+                <!-- 포유 -->
+               <div class="box_for_u">
+               <h2 class="tit_main_float"><span class="eng">For U</span></h2>
+               <div id="foru_infos">
+                <div class="cont_for_u3" style="display:block"><!-- 로그아웃 포유미사용자 사용시 style제거--><!-- 20160406 포유 설정전 수정 -->
+                <div class="inner">
+                <p class="tit">당신을 위한 맞춤 공연</p>
+                <strong class="for_u3_txt">나에게 딱 맞는 <span>공연 추천</span>과 <br><span>공연 스케줄 관리</span>를 시작해보세요!</strong>
+                <div class="thumb" style="position:relative;">
+                <img src="https://cdnticket.melon.co.kr/resource/image/web/common/mian_foru_img.png" onerror="noImage(this, 234, 175)"  width="257" height="88" alt="" style="vertical-align:top;">
+                <span class="frame_160_160_radius"></span>
+                </div>
+                <a href="/foru/index.htm"  class="btn_flexible2 btn_no_radius_43_gray"><span>For U 시작하기</span></a>
+                </div>
+                </div><!-- //로그아웃 포유미사용자 -->
+
+                    <div class="ctr"><a href="/foru/index.htm" class="ico_more">더보기</a></div>
+               </div>
+
+                </div>
+                <!-- // 포유 -->
+
+                <!-- MELONUIT-520 190611 -->
+                <div class="box_ranking">
+                    <h2 class="tit_main_float">랭킹</h2>
+                    <div class="wrap_main_rank">
+                        <ul class="list_main_rank">
+                            <li class="nth1 on">
+                                    <h2 class="tit"><a href="#none">콘서트/페스티벌</a></h2>
+                                    <div class="box_cont">
+                                        <ol class="list_ranking">
+                                            <li class="nth1">
+                                                    <a href="/performance/index.htm?prodId=211366" class="item">
+                                                        <span class="inner">
+                                                            <span class="ranking">1</span>
+                                                            <span class="change">-<span class="screen_out">순위유지</span></span>
+                                                                <strong class="tit_cont">제18회 부산항축제 with MyK FESTA</strong>
+                                                            <span class="day">2025.05.30 </span>
+                                                            <span class="location">부산항국제여객터미널 야외주차장 일원&nbsp;</span>
+                                                            <span class="thumb">
+                                                                <img onerror="noImage(this, 90, 125)" src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/05/20250502111221cd54e04d-7e7e-4b2e-9f42-4956ee17c12f.jpg/melon/resize/91x126/strip/true/quality/80" alt="" />
+                                                                <span class="frame"></span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            <li class="nth2">
+                                                    <a href="/performance/index.htm?prodId=211383" class="item">
+                                                        <span class="inner">
+                                                            <span class="ranking">2</span>
+                                                            <span class="change"><span class="ico_change ico_new"></span><span class="screen_out">신규</span></span>
+                                                            <strong class="tit_cont">우리가 만든 음악섬</strong>
+                                                            <span class="day">2025.05.30 - 2025.06.01</span>
+                                                            <span class="location">LG아트센터 서울&nbsp;U+ 스테이지</span>
+                                                            <span class="thumb">
+                                                                <img onerror="noImage(this, 90, 125)" src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/05/202505081604085474237a-af4b-4c0e-b910-6115e6299cc8.jpg/melon/resize/91x126/strip/true/quality/80" alt="" />
+                                                                <span class="frame"></span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            <li class="nth3">
+                                                    <a href="/performance/index.htm?prodId=211080" class="item">
+                                                        <span class="inner">
+                                                            <span class="ranking">3</span>
+                                                            <span class="change"><span class="ico_change ico_down">1</span><span class="screen_out">단계 하락</span></span>
+                                                                <strong class="tit_cont">제17회 서울재즈페스티벌 2025</strong>
+                                                            <span class="day">2025.05.30 - 2025.06.01</span>
+                                                            <span class="location">올림픽공원&nbsp;</span>
+                                                            <span class="thumb">
+                                                                <img onerror="noImage(this, 90, 125)" src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/04/20250424114350bd543768-e642-4778-8650-6e7e1d7706f2.jpg/melon/resize/91x126/strip/true/quality/80" alt="" />
+                                                                <span class="frame"></span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                    </div>
+                                </li>
+                            <li class="nth2">
+                                    <h2 class="tit"><a href="#none">뮤지컬/연극</a></h2>
+                                    <div class="box_cont">
+                                        <ol class="list_ranking">
+                                            <li class="nth1">
+                                                    <a href="/performance/index.htm?prodId=211297" class="item">
+                                                        <span class="inner">
+                                                            <span class="ranking">1</span>
+                                                            <span class="change"><span class="ico_change ico_up">5</span><span class="screen_out">단계 상승</span></span>
+                                                                <strong class="tit_cont">뮤지컬 〈멤피스〉</strong>
+                                                            <span class="day">2025.06.17 - 2025.09.21</span>
+                                                            <span class="location">충무아트센터&nbsp;대극장</span>
+                                                            <span class="thumb">
+                                                                <img onerror="noImage(this, 90, 125)" src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/04/202504161931080072b91e-bac5-4f3a-ab5a-56d9c13a3811.jpg/melon/resize/91x126/strip/true/quality/80" alt="" />
+                                                                <span class="frame"></span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            <li class="nth2">
+                                                    <a href="/performance/index.htm?prodId=211212" class="item">
+                                                        <span class="inner">
+                                                            <span class="ranking">2</span>
+                                                            <span class="change">-<span class="screen_out">순위유지</span></span>
+                                                                <strong class="tit_cont">뮤지컬 〈팬텀〉 10주년 기념 공연</strong>
+                                                            <span class="day">2025.05.31 - 2025.08.11</span>
+                                                            <span class="location">세종문화회관&nbsp;대극장</span>
+                                                            <span class="thumb">
+                                                                <img onerror="noImage(this, 90, 125)" src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/04/20250401165633c7232d80-5272-40a0-bc5f-eb22b8115289.jpg/melon/resize/91x126/strip/true/quality/80" alt="" />
+                                                                <span class="frame"></span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            <li class="nth3">
+                                                    <a href="/performance/index.htm?prodId=211131" class="item">
+                                                        <span class="inner">
+                                                            <span class="ranking">3</span>
+                                                            <span class="change"><span class="ico_change ico_down">2</span><span class="screen_out">단계 하락</span></span>
+                                                                <strong class="tit_cont">뮤지컬 〈매디슨 카운티의 다리〉</strong>
+                                                            <span class="day">2025.05.01 - 2025.07.13</span>
+                                                            <span class="location">광림아트센터&nbsp;BBCH홀</span>
+                                                            <span class="thumb">
+                                                                <img onerror="noImage(this, 90, 125)" src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/03/20250305174642c344f15c-4b09-42f7-a8dd-7f18e8f1273a.jpg/melon/resize/91x126/strip/true/quality/80" alt="" />
+                                                                <span class="frame"></span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                    </div>
+                                </li>
+                            <li class="nth3">
+                                    <h2 class="tit"><a href="#none">전시/클래식/기타</a></h2>
+                                    <div class="box_cont">
+                                        <ol class="list_ranking">
+                                            <li class="nth1">
+                                                    <a href="/performance/index.htm?prodId=211355" class="item">
+                                                        <span class="inner">
+                                                            <span class="ranking">1</span>
+                                                            <span class="change">-<span class="screen_out">순위유지</span></span>
+                                                                <strong class="tit_cont">NCT WISH THE 1ST PHOTO EXHIBITION [ONE SUMMER WISH]</strong>
+                                                            <span class="day">2025.05.15 - 2025.06.01</span>
+                                                            <span class="location">ccollabohaus 한남&nbsp;</span>
+                                                            <span class="thumb">
+                                                                <img onerror="noImage(this, 90, 125)" src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/04/20250429144433bcd0da48-53bd-47ea-8b4f-95f4b0e31774.jpg/melon/resize/91x126/strip/true/quality/80" alt="" />
+                                                                <span class="frame"></span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            <li class="nth2">
+                                                    <a href="/performance/index.htm?prodId=210952" class="item">
+                                                        <span class="inner">
+                                                            <span class="ranking">2</span>
+                                                            <span class="change"><span class="ico_change ico_up">1</span><span class="screen_out">단계 상승</span></span>
+                                                                <strong class="tit_cont">해리 포터와 혼혈 왕자™ 인 콘서트</strong>
+                                                            <span class="day">2025.05.16 - 2025.05.18</span>
+                                                            <span class="location">세종문화회관&nbsp;대극장</span>
+                                                            <span class="thumb">
+                                                                <img onerror="noImage(this, 90, 125)" src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/03/20250327095707b1ada4dd-af29-4291-9051-c5eb21513ebd.jpg/melon/resize/91x126/strip/true/quality/80" alt="" />
+                                                                <span class="frame"></span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            <li class="nth3">
+                                                    <a href="/performance/index.htm?prodId=211200" class="item">
+                                                        <span class="inner">
+                                                            <span class="ranking">3</span>
+                                                            <span class="change"><span class="ico_change ico_up">1</span><span class="screen_out">단계 상승</span></span>
+                                                                <strong class="tit_cont">아르누보의 꽃 : 알폰스 무하 원화전</strong>
+                                                            <span class="day">2025.03.20 - 2025.07.13</span>
+                                                            <span class="location">마이아트뮤지엄&nbsp;</span>
+                                                            <span class="thumb">
+                                                                <img onerror="noImage(this, 90, 125)" src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/03/20250318203006a2bd43d6-0d55-4971-b4ed-7c5e071cd95a.jpg/melon/resize/91x126/strip/true/quality/80" alt="" />
+                                                                <span class="frame"></span>
+                                                            </span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                    <script type="text/javascript">
+                        // onoffBthSet(".list_ranking li",".list_ranking li .item");
+                        tabSet(".list_main_rank", ".list_main_rank li .tit a");
+                    </script>
+                    <div class="ctr"><a href="/ranking/index.htm" class="ico_more">더보기</a></div>
+                </div>
+                <!-- // MELONUIT-520 190611 -->
+
+                <!-- 위시 기능 숨김 -->
+                <!-- <div class="box_wish">
+                    <h2 class="tit_main_float"><span class="eng">Wish</span>콘서트 <span class="more"><span class="eng">Wish</span>원정대 모집중</span></h2>
+                    <ul class="list_wish">
+                        </ul>
+                    <div class="ctr"><a href="#none" class="btn_comm btn_paging_prev">이전</a><span class="paging"><strong></strong> / <span>3</span></span><a href="#none" class="btn_comm btn_paging_next">다음</a></div>
+                </div>
+<script type="text/javascript">
+pagingRolling(".box_wish .list_wish",".box_wish .ctr .paging span",".box_wish .ctr .paging strong",".box_wish .ctr .btn_paging_next",".box_wish .ctr .btn_paging_prev");
+</script>
+                <div class="box_lucky_ticket">
+                    <h2 class="tit_main_float">럭키티켓</h2>
+                    <div class="cont_lucky_ticket">
+                        <a href="#none" class="inner">
+                            <span class="thumb">
+                                <img src="../resource/image/web/thumb/thumb_320_245.png" alt="" />
+                                <span class="frame"></span>
+                            </span>
+                            <span class="cont">
+                                <span class="opt">스페셜 <span class="eng">VIP</span>석 <span class="eng">100</span>매</span>
+                                <strong class="tit">마룬파이브 첫 내한공연</strong>
+                                <span class="day">2015.11.13 ~ 2015.12.31</span>
+                                <span class="time"><span class="hour">05</span>:<span class="minute">25</span>:<span class="second">36</span></span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="evt_banner"><a href="#none"><img src="../resource/image/web/thumb/banner_320_120.png" alt="" /></a></div>
+                </div>-->
+            </div>
+            <div class="wrap_main_concert">
+                <h2 class="tit_main_concert">멜론티켓 PICK! 추천공연</h2>
+                <ul class="list_main_concert" id="perf_poster">
+                <li  class="first" >
+                        <a href="/performance/index.htm?prodId=211313" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/05/20250507091302ec296b84-26a4-4205-9157-fca50dc3200f.png/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">2025 부산원아시아페스티벌(BOF)</strong> <span class="day">2025.06.11 - 2025.06.13</span>
+                            <span class="location">부산 벡스코(BEXCO) 제 1전시장</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/bridge.htm?brgId=100433" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/20250424101408ef385a6c-2b9f-4bfc-a361-a94e21ba028c.png/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">중식이밴드 대도시 클럽 투어</strong> <span class="day">2025.05.10 - 2025.06.21</span>
+                            <span class="location">부산 외 3개 지역</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=211212" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/04/20250401165633c7232d80-5272-40a0-bc5f-eb22b8115289.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">뮤지컬 〈팬텀〉 10주년 기념 공연</strong> <span class="day">2025.05.31 - 2025.08.11</span>
+                            <span class="location">세종문화회관 대극장</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/bridge.htm?brgId=100428" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/202504031448444d21f639-fac1-4c36-9535-52b04c68714f.png/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">윤종신 전국투어 콘서트 ‘그때’</strong> <span class="day">2025.04.12 - 2025.06.08</span>
+                            <span class="location">대구 외 6개 지역</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li  class="first" >
+                        <a href="/performance/index.htm?prodId=211287" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/04/20250411173046e18413c5-fd82-4fd2-8752-0dd3e8f122d6.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">2025 RO WOON FAN MEETING ‘Before Blooming’</strong> <span class="day">2025.05.31 - 2025.05.31</span>
+                            <span class="location">광운대 동해문화예술관 </span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=211158" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/04/20250414172508241996c1-b71e-4f2d-864a-892469a83d09.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">2025 KAI SOLO CONCERT TOUR 〈KAION〉 IN SEOUL</strong> <span class="day">2025.05.17 - 2025.05.18</span>
+                            <span class="location">올림픽공원 핸드볼경기장</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=211348" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/04/2025042516292753e9d4fe-b5c3-4b89-a5ca-d848547ec0c6.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">2025 DOH KYUNG SOO ASIA CONCERT TOUR 〈DO it! in Seoul〉</strong> <span class="day">2025.07.19 - 2025.07.20</span>
+                            <span class="location">고려대학교 화정체육관 </span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=211159" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/03/2025030717494442f5126c-b98f-4e90-996b-f2c2142938d0.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">SHINee WORLD Ⅶ [E.S.S.A.Y] (Every Stage Shines Around You)</strong> <span class="day">2025.05.23 - 2025.05.25</span>
+                            <span class="location">KSPO DOME (올림픽 체조경기장) </span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li  class="first" >
+                        <a href="/performance/index.htm?prodId=211309" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/04/20250430120017e5e04ff2-ae71-4e76-b135-779145d7ee88.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">2025 DOYOUNG CONCERT [ Doors ]</strong> <span class="day">2025.06.14 - 2025.06.15</span>
+                            <span class="location">잠실실내체육관 </span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=211189" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/03/202503181721435f894323-28eb-4116-aad8-68588f3e151f.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">2025 Jay Park World Tour [Serenades & Body Rolls]</strong> <span class="day">2025.05.24 - 2025.05.25</span>
+                            <span class="location">올림픽공원 핸드볼경기장</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=211368" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/04/20250430133749be7a23bf-cbdc-4161-89d9-0e291d8ef6f0.png/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">장범준 금토일 공연 (Weekend Show)</strong> <span class="day">2025.05.09 - 2025.06.15</span>
+                            <span class="location">LG아트센터 서울 U+ 스테이지</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/bridge.htm?brgId=100434" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/20250428150317748f7168-81e5-4474-b2e5-595a01adddd6.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">Sync Next 25</strong> <span class="day">2025.07.04 - 2025.09.06</span>
+                            <span class="location">서울 외 5개 지역</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li  class="first" >
+                        <a href="/performance/index.htm?prodId=211104" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/04/2025040310575950e7a0ec-90c1-4f66-ab33-382215881fba.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">연극 ‘헤다 가블러’</strong> <span class="day">2025.05.07 - 2025.06.08</span>
+                            <span class="location">LG아트센터 서울 LG SIGNATURE 홀</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=211191" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/03/20250319164854d746338b-eb0c-45fe-8496-95b7afe427ff.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">뮤지컬 〈구텐버그〉</strong> <span class="day">2025.04.30 - 2025.07.20</span>
+                            <span class="location">플러스씨어터 </span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=207987" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2023/03/202303171047117fdc060a-8274-4ab8-ab99-990489e4f652.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">［서울 대학로］연극 라면</strong> <span class="day">2023.03.20 - 오픈런</span>
+                            <span class="location">해피씨어터 </span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=210948" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/03/20250331085721a336319c-b099-4ef2-ac4a-52438b2b943f.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">요한 잉거 〈워킹 매드 ＆ 블리스〉</strong> <span class="day">2025.05.08 - 2025.05.18</span>
+                            <span class="location">세종문화회관 M씨어터</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li  class="first" >
+                        <a href="/performance/index.htm?prodId=210913" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/01/202501171042555961e31c-43c4-4999-9771-c4e3c3911e1d.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">매튜 본의 ‘백조의 호수’</strong> <span class="day">2025.06.18 - 2025.06.29</span>
+                            <span class="location">LG아트센터 서울 LG SIGNATURE 홀</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=211362" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/04/202504291105386447e3bd-4664-4b6c-b2ad-8ab266982768.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">2025 Pidalso Solo Concert</strong> <span class="day">2025.06.28 - 2025.06.28</span>
+                            <span class="location">톤 스튜디오 </span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/bridge.htm?brgId=100432" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/202504211730347827b001-6928-4f48-a1f3-133f2ec88c2a.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">2025 브로콜리너마저 클럽 투어 - 매일 새롭게 태어나는 꿈</strong> <span class="day">2025.05.23 - 2025.05.25</span>
+                            <span class="location">경남 외 2개 지역</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=211201" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/03/202503182103326086f55b-a251-4165-b649-45edde7a5cea.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">[20% 할인 + 음료 증정] 아르누보의 꽃 : 알폰스 무하 원화전</strong> <span class="day">2025.03.20 - 2025.05.31</span>
+                            <span class="location">마이아트뮤지엄 </span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li  class="first" >
+                        <a href="/performance/index.htm?prodId=210709" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/05/2025050816302249698bac-37ff-4e98-9b68-0ea3f6eacd4e.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">미피 70주년 생일 기념전: 미피와 마법 우체통</strong> <span class="day">2024.11.21 - 2025.08.17</span>
+                            <span class="location">인사센트럴뮤지엄 </span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/bridge.htm?brgId=100431" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/04/202504211224513b38ecb5-b94e-4dbc-a1db-842cf38f222c.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">극동아시아타이거즈 전국투어 <호랑이 소리를 찾아서></strong> <span class="day">2025.05.17 - 2025.06.28</span>
+                            <span class="location">강원 외 2개 지역</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=210779" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/02/20250206173223276f0c3a-52e3-4da9-be81-57d311e12c30.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">워터밤 서울 2025 (WATERBOMB SEOUL 2025)</strong> <span class="day">2025.07.04 - 2025.07.06</span>
+                            <span class="location">일산 킨텍스(KINTEX) 야외 글로벌 스테이지(KINTEX 제2전시장)</span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                <li >
+                        <a href="/performance/index.htm?prodId=211061" class="inner">
+                        <span class="thumb">
+                                <img src="https://cdnticket.melon.co.kr/resource/image/upload/product/2025/02/20250217103420eefc0681-4ad8-427f-89e7-0f32936d9e5a.jpg/melon/strip/true/quality/80/optimize" alt="" />
+                                <span class="frame"></span>
+                            </span>
+
+                            <strong class="tit">2025 타임캡슐 슈퍼콘서트 in 인천</strong> <span class="day">2025.06.14 - 2025.06.14</span>
+                            <span class="location">송도 달빛축제공원 </span>
+                            <span class="stat"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        <!-- //contents -->
+    </div>
+</div>
+
+<!-- @@@ 2016.08.16 rightWingBanner 추가 -->
+<div class="rightWingBanner">
+    <ul>
+        <li>
+                <a href="#none"	onclick="javascript:bannerLanding('EV', '1436');">
+                <img onerror="noImage(this, 160, 285)" src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/20250507151010e92ea24a-866c-4ff3-8173-cc0c36d951f7.png" alt="rightWingbanner1" /></a>
+            </li>
+        <li>
+                <a href="#none"	onclick="javascript:bannerLanding('EV', '1438');">
+                <img onerror="noImage(this, 160, 285)" src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/202505090914559e4aa779-7dc1-400a-81f4-1bdd0ff4d714.jpg" alt="rightWingbanner1" /></a>
+            </li>
+        </ul>
+</div>
+<!-- @@@ 2016.08.16 rightWingBanner 추가 -->
+
+<div class="my_fold" style="width: 1008px;margin: 0 auto;">
+    <div class="footer_notice">
+        <strong>공지사항</strong>
+        <ul>
+            <li>
+                <p class="n_txt">
+                    <a href="/customerservice/noticeInform.htm?noticeNo=573"><span class="new">New</span>[시스템작업] 5.10(토)－5.11(일) 한국산업은행 전산작업 안내</a>
+                    <span class="date">2025.05.09</span>
+                </p>
+            </li>
+            </ul>
+    </div>
+</div>
+
+<!-- 배너 팝업 -->
+<!-- @@@ 2016.02.18 기획전 배너 레이어 팝업 [BannerImgVO [imgPosNo=0, imgType=W, imgUrl=/resource/image/upload/marketing/2025/05/20250508173324d038d3c5-01b7-4b5a-8882-49e500fa3e4c.jpg, imgBgColor=#FFFFFF, imgDescr=, landingType=T, landingRefType=TD, landingRefValue=211348, landingRefTypeName=티켓, landingRefTitle=2025 DOH KYUNG SOO ASIA CONCERT TOUR 〈DO it! in Seoul〉, landingRefUrl=], BannerImgVO [imgPosNo=1, imgType=W, imgUrl=/resource/image/upload/marketing/2025/05/20250508173313f1831844-41a3-4dba-a26c-bfd27c8477bb.png, imgBgColor=#FFFFFF, imgDescr=, landingType=T, landingRefType=TD, landingRefValue=211358, landingRefTypeName=티켓, landingRefTitle=2025 DOH KYUNG SOO ASIA CONCERT TOUR 〈DO it! in Seoul〉, landingRefUrl=], BannerImgVO [imgPosNo=2, imgType=W, imgUrl=/resource/image/upload/marketing/2025/05/2025050817330016f54e6b-0a2a-43da-a540-69efb7171b01.jpg, imgBgColor=#FFFFFF, imgDescr=, landingType=T, landingRefType=TD, landingRefValue=211365, landingRefTypeName=티켓, landingRefTitle=2025 DOH KYUNG SOO ASIA CONCERT TOUR 〈DO it! in Seoul〉, landingRefUrl=], BannerImgVO [imgPosNo=3, imgType=W, imgUrl=/resource/image/upload/marketing/2025/05/2025050817324802f293a0-7cd2-4842-8218-355b5957c105.jpg, imgBgColor=#FFFFFF, imgDescr=, landingType=T, landingRefType=TD, landingRefValue=211297, landingRefTypeName=티켓, landingRefTitle=2025 DOH KYUNG SOO ASIA CONCERT TOUR 〈DO it! in Seoul〉, landingRefUrl=]] -->
+<div id="mainPop" class="mainlayerPop mainlayerNew" style="display:none; top:165px; left:50%;margin-left:-264px; width:528px">
+    <div class="la_header">
+        <div class="la_header1"></div>
+    </div>
+    <div class="la_middle">
+        <div class="la_middle1">
+            <div class="la_con">
+                <ul class="planEvent">
+                    <li class="">
+                                <a href="#" onclick="javascript:bannerLanding('TD', '211348');">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/20250508173324d038d3c5-01b7-4b5a-8882-49e500fa3e4c.jpg/melon/strip/true/quality/50" onerror="noImage(this, 236, 316)" width="236" height="316" alt="" />
+                                </a>
+                            </li>
+                        <li class="lst">
+                                <a href="#" onclick="javascript:bannerLanding('TD', '211358');">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/20250508173313f1831844-41a3-4dba-a26c-bfd27c8477bb.png/melon/strip/true/quality/50" onerror="noImage(this, 236, 316)" width="236" height="316" alt="" />
+                                </a>
+                            </li>
+                        <li class="">
+                                <a href="#" onclick="javascript:bannerLanding('TD', '211365');">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/2025050817330016f54e6b-0a2a-43da-a540-69efb7171b01.jpg/melon/strip/true/quality/50" onerror="noImage(this, 236, 316)" width="236" height="316" alt="" />
+                                </a>
+                            </li>
+                        <li class="lst">
+                                <a href="#" onclick="javascript:bannerLanding('TD', '211297');">
+                                    <img src="https://cdnticket.melon.co.kr/resource/image/upload/marketing/2025/05/2025050817324802f293a0-7cd2-4842-8218-355b5957c105.jpg/melon/strip/true/quality/50" onerror="noImage(this, 236, 316)" width="236" height="316" alt="" />
+                                </a>
+                            </li>
+                        </ul>
+            </div>
+
+            <div class="popClose">
+                <ul class="closeChk">
+                    <li>
+                        <input type="checkbox" id="popup_chk" name="popup_chk" ><!-- id/for 연결 -->
+                        <label for="popup_chk" >오늘 하루 이 창을 열지 않음</label>
+                    </li>
+                    <li class="lst"><a href="javascript:;" class="btn_layerpopup_close" id="btn_layerpopup_close">레이어팝업닫기</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="la_footer"><div class="la_footer1"></div></div>
+</div>
+<!-- //@@@ 2016.02.18 기획전 배너 레이어 팝업 -->
+<script type="text/javascript" src="/resource/script/web/main/melonticket_main.js?t=20171114"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+        $("#wrap").attr('class', 'main');
+        initMain();
+        $("#offer_performance" + Math.floor((Math.random() * 3) + 1)).addClass("on");
+        
+        setOfferData('MAIN_B_CO_1');
+        
+        setOfferData('MAIN_B_CO_2');
+        
+        setOfferData('MAIN_B_CO_3');
+        
+        if(isMelonLogin()) {
+            //foruInfo();
+            getServiceInfo();
+        }
+
+        setCookieCoop();
+
+        // cBanner_메인 중단 띠배너 랜덤노출
+        var n = $("#cBanner").find("a").size();
+        if(n >= 1){
+            var r = Math.floor(Math.random()*(n));
+            $("#cBanner").find("a:eq("+r+")").show();
+        }else{
+            $("#cBanner").remove();
+        }
+    });
+
+//coop 셋팅
+function setCookieCoop(){
+
+    var coop = getQueryVariable('coop');
+    var coop_funnel = getQueryVariable('coop_funnel');
+
+     if(coop != null && coop !=""&&coop_funnel != null && coop_funnel !=""){
+            setCookie("coop",coop, "", "/", MELON.WEBSVC.POC.melonDomain);
+            setCookie("coop_funnel",coop_funnel, "", "/", MELON.WEBSVC.POC.melonDomain);
+            setFkCookie("tkt_fk","0", 3, "/", MELON.WEBSVC.POC.melonDomain);
+            setCookie("cbo","0", "", "/", MELON.WEBSVC.POC.melonDomain);
+     }
+}
+
+//파리미터 값 가져오기
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    //if( window.console ) { console.log('Query variable %s not found', variable); }
+    return '';
+}
+
+function setOfferData(offerPosType)
+{
+    $.ajax({
+        type : "GET",
+        url  : "/offer/ajax/offerList.json",
+        async : false,
+        data : {offerPosType : offerPosType},
+        success : function(obj){
+
+            var list_blank =  ' <li class="list_blank"> '+
+                                ' 	<div class="thumb"></div>'+
+                                ' </li> ';
+
+            if(!obj.result) {
+                $("#"+offerPosType).empty();
+                var dataCnt = 0;
+                $.each(obj.data, function(i, o) {
+                    if(i < 5)
+                    {
+                        var url = '/performance/index.htm?prodId=';
+                        if(o.landingRefType == 'BR')
+                            url = '/performance/bridge.htm?brgId=';
+                        var offer =
+                                     '       <li>'+
+                                     '           <div class="thumb"><a href="'+url+o.prodId+'"><img src="https://cdnticket.melon.co.kr'+o.posterImg+'/melon/strip/true/quality/80/optimize" onerror="noImage(this, 160, 225)" alt="" /><span class="frame"></span></a></div>';
+                                     if(typeof o.subTitle != 'undefined') {
+                                         offer +=         '           <div class="txt"><a href="'+url+o.prodId+'">'+o.subTitle+'</a></div>';
+                                     }else{
+                                       offer +=         '           <div class="txt"><a href="'+url+o.prodId+'">'+o.title+'</a></div>';
+                                     }
+                                     offer +='       </li>';
+
+                        $("#"+offerPosType).append(offer);
+
+                        dataCnt = dataCnt + 1;
+                    }
+                    });
+
+                // 빈칸 채우기
+                    if(dataCnt == 0){
+                        $("#"+offerPosType).append(list_blank);
+                        $("#"+offerPosType).append(list_blank);
+                        $("#"+offerPosType).append(list_blank);
+                        $("#"+offerPosType).append(list_blank);
+                        $("#"+offerPosType).append(list_blank);
+                    }
+                    if(dataCnt == 1){
+                        $("#"+offerPosType).append(list_blank);
+                        $("#"+offerPosType).append(list_blank);
+                        $("#"+offerPosType).append(list_blank);
+                        $("#"+offerPosType).append(list_blank);
+                    }
+                    if(dataCnt == 2){
+                        $("#"+offerPosType).append(list_blank);
+                        $("#"+offerPosType).append(list_blank);
+                        $("#"+offerPosType).append(list_blank);
+                    }
+                    if(dataCnt == 3){
+                        $("#"+offerPosType).append(list_blank);
+                        $("#"+offerPosType).append(list_blank);
+                    }
+                    if(dataCnt == 4){
+                        $("#"+offerPosType).append(list_blank);
+                    }
+
+                }
+
+                return;
+        },
+        error:function(e){
+            alert("요청사항을 처리중 오류가 발생했습니다.");
+        }
+   });
+}
+function initMain() {
+    if(!getCookie("hide_banner")) {
+        $("#mainPop").show();
+    }
+    $('#btn_layerpopup_close').on('click', function(){
+        if($("#popup_chk").is(":checked")){
+            setCookie("hide_banner", true, 1, "/", MELON.WEBSVC.POC.melonDomain);
+        }
+        $("#mainPop").hide();
+    });
+}
+
+function getServiceInfo() {
+    $.ajax({
+        type : "get",
+        dataType:"jsonp",
+        url  : "https://tktapi.melon.com/poc/system/serviceInfo.json?v=1",
+        async : false,
+        xhrFields: {withCredentials: true},
+        success : function(response){
+            try{
+                if(response.result == 0) {
+                    if(response.data.fu == 'Y') {
+                        foruInfo();
+                    }
+                }
+            }catch(e){}
+        },
+        error : function(xhr, status, error) {
+            //alert('잠시 후 다시 시도해주세요.');
+        }
+    });
+}
+
+function foruInfo(){
+    $.ajax({
+            type : "GET",
+            url  : "/main/ajax/foruInfo.htm",
+            async : false,
+            xhrFields: {withCredentials: true},
+            success : function(d){
+                try {
+                $('#foru_infos').html(d);
+                }catch(e){}
+            },
+            error:function(e){
+                //alert("요청사항을 처리중 오류가 발생했습니다.");
+            }
+       });
+
+
+ };
+</script>
+
+<!-- footer -->
+    <div id="footer" class="my_fold">
+        <div class="btn_top_wrap">
+            <a href="#skip_nav" class="btn_top" title="맨 위로 가기" style=""><span>맨 위로 가기</span></a><!-- scrollTop 1800 -->
+        </div>
+        <div class="footer_quick_link">
+            <div class="l_box">
+                <a href="//www.melon.com" class="linking5">Melon</a>
+            </div>
+            <div class="r_box">
+                <a href="https://ticket.melon.com/customerservice/howto.htm" class="r_box_m1">예매가이드</a>
+                <a href="https://ticket.melon.com/customerservice/partnership_guide.htm" class="r_box_m2">티켓판매제휴</a>
+                <!-- 20160317추가 -->
+                <span class="r_box_m3">예매문의(1588-2314)</span>
+            </div>
+        </div>
+        <div class="inner_footer">
+            <!-- UX-1513 -->
+            <ul class="clear_g">
+                <li class="first_child"><a href="https://kakaoent.com/" title="회사소개" target="_blank">회사소개</a></li>
+                <li><a href="javascript:MELON.WEBSVC.POC.link.goTerms('use', 'use');" title="멜론이용약관">이용약관</a></li>
+                <li><a href="#none" onclick="openWinPop2('https://ticket.melon.com/common/popup/ticketAgreementPop.htm',845,750); return false;" title="멜론티켓이용약관">멜론티켓이용약관</a></li>
+                <!-- <li><a href="https://checkout-web.kakao.com/terms/paid" target="_blank" title="전자금융거래약관">전자금융거래약관</a></li> -->
+                <!-- MELONUIT-268 -->
+                <!-- <li><a href="https://info.melon.com/terms/web/terms1_3.html" title="위치기반서비스 이용약관" target="_blank">위치기반서비스 이용약관</a></li> -->
+                <!-- //MELONUIT-268 -->
+                <li><a href="javascript:MELON.WEBSVC.POC.link.goTerms('privateinfo', 'privateinfo');" title="개인정보처리방침"><strong>개인정보처리방침</strong></a></li>
+                <li><a href="javascript:MELON.WEBSVC.POC.link.goTerms('youth', 'youth');" title="청소년보호정책">청소년보호정책</a></li>
+                <li><a href="https://ticketpartner.melon.com/login/loginForm.htm" title="파트너센터" target="_blank">파트너센터</a></li>
+            </ul>
+            <p>
+                <span class="first"><strong>㈜카카오엔터테인먼트</strong></span><span>경기도 성남시 분당구 판교역로 235, 에이치스퀘어 N동 8, 9, 10층</span><span>공동대표이사 : 권기수, 장윤중</span><span class="first">사업자등록번호 : 220-88-02594</span><br />
+                <span class="first">통신판매업신고번호 : 2018-성남분당B-0004 <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=2208802594" class="btn-info" title="사업자정보확인" target="_blank">사업자정보확인</a></span><span class="first">고객센터(평일/주말 09:00~18:00) : 1899-0042 (유료)</span><br />
+                <span class="first">호스팅서비스사업자 : (주)카카오엔터테인먼트</span><span>© Kakao Entertainment Corp.</span>
+            </p>
+            <!-- //UX-1513 -->
+            <!-- 20160509 구매안전 서비스 -->
+            <div class="safe_service">
+            	<dl>
+                	<dt>신한은행 구매안전 서비스</dt>
+                    <dd>고객님은 안전거래를 위해 현금으로 결제시 <br>멜론티켓에서 가입한 신한은행으로 <br>구매안전서비스를 이용하실 수 있습니다.</dd>
+                    <dd><a href="https://cdnticket.melon.co.kr/resource/image/web/etc/melonticket_ent_guarantee_2024.pdf" target="_blank">서비스 가입사실 확인</a></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="ban">
+            <a href="//www.melon.com/footer/awrad.htm?pageType=02"><img width="101" height="27" src="https://cdnticket.melon.co.kr/resource/image/web/common/ban_footer01_190702.png" alt="2019 대한민국 퍼스트브랜드 대상"></a>
+            <a href="//www.melon.com/footer/awrad.htm?pageType=04"><img width="125" height="25" src="https://cdnticket.melon.co.kr/resource/image/web/common/ban_footer02_190702.png" alt="2019 소비자가 뽑은 가장 신뢰하는 브랜드 대상"></a>
+            <a href="//www.melon.com/footer/awrad.htm?pageType=03"><img width="113" height="25" src="https://cdnticket.melon.co.kr/resource/image/web/common/ban_footer03_190702.png" alt="한국능률협회컨설팅 2018 브랜드 파워 1위"></a>
+            <!-- <a href="#"><img width="118" height="25" src="http://cdnticket.melon.co.kr/resource/image/web/common/ban_footer04_170316.png" alt="2016 대한민국 브랜드 고객충성도 1위"></a> -->
+            <a href="//www.kdce.or.kr/user/ctf/clmsCtfTransList.do?NmberBusiRegNo=1388105876&amp;websiteName=www.melon.com&amp;SUB=FB" target="_blank"><img width="82" height="22" src="https://cdnticket.melon.co.kr/resource/image/web/common/ban_footer05_170316.png" alt="음악저작권 이용허락 인증"></a>
+            <a href="//copyrightok.kr/" target="_blank"><img src="https://cdnticket.melon.co.kr/resource/image/web/common/ban_footer06_200115.png" alt="클린사이트"></a>
+            <!-- MELONUIT-268 ISMSP 인증마크 삭제 -->
+            <!-- <img src="https://cdnticket.melon.co.kr/resource/image/web/common/ban_footer07_200120.png" alt="정보보호 관리체계 ISMS 인증"> -->
+            <!-- MELONUIT-268 -->
+        </div>
+        <a href="#" class="btn_top" title="맨 위로 가기" style="display: none;">맨 위로 가기</a>
+    </div>
+    <!-- //footer -->
+<script type="text/javascript">
+function openWinPop2(url,w,h,options){
+    if(!options) options = "resizable=no toolbar=no menubar=no location=no scrollbars=yes status=yes";
+    var opt = "width=" + w + " height=" + h + " " + options;
+    window.open(url,name,opt);
+};
+if(window['openNewWin'] == void 0){ //old browser's window has object check
+    var openNewWin = function (url,options){
+        if(!options) options = '';
+        window.open(url,'',options);
+    };
+}
+</script>
+</div>
+
+<script type="text/javascript">
+    var httpWww = DeployPhaseUtils.convertUrl("http://ticket.melon.com");
+    var httpsWww = DeployPhaseUtils.convertUrl("https://ticket.melon.com");
+    var POC_ID = "WP15";
+</script>
+
+<script type="text/javascript" src="/resource/script/web/common/melonweb_comm.js?t=20231208"></script>
+<script type="text/javascript" src="/resource/script/web/common/melonweb_play.js?t=20210625"></script>
+<script type="text/javascript" src="/resource/script/web/common/melonweb_cm.js?t=20180709"></script>
+
+<script type="text/javascript">
+    var melon = MELON.WEBSVC.POC;
+    try {
+        document.domain="melon.com";
+    } catch(e) {}
+
+    //pocId 쿠키설정 실행
+    try {
+        melon.setPocId();
+    } catch (e){}
+</script>
+
+<script type="text/javascript" src="/resource/script/web/common/socket.io.js"></script>
+<script type="text/javascript" src="https://cdnimg.melon.co.kr/static/web/resource/script/w1/fl/7/uot4m6bho9.js"></script>
+
+<script type="text/javascript" src="/resource/script/web/common/melonweb_cmtpgn.js?t=20200115"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      width: 400px;
+      height: 300px;
+      border: 3px dotted red;
+      margin: 100px auto;
+    }
+    button{
+      padding: 10px 20px;
+      border-radius:0% ;
+    }
+    .disabled {
+      color: #ccc;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+    }
+
+    .enabled {
+      color: #fff;
+      background-color: #007bff;
+      border: 1px solid #007bff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="btnChect"><label for="btnCheck">필수항목동의</label><br>
+    <button type="button" class="disabled" id="bctAction"disabled>다음으로 진행</button>
+
+  </div>
+
+  <script>
+    //document야 너가 가지고있는 모든 노드가 객체완성이되면 그때 나를 불러줘.
+    document.addEventListener("DOMContentLoaded",function(){
+      if(btncheck.checked){
+        button.classList.toogle('disabled');
+        button.classList.toggle('enabled');
+        button.disabled =bunCheck.checked;
+      }else{
+        button.ch
+      }
+    },false);
+    //1. 객체찾기
+    let btncheck = document.querySelector("btnCheck");
+    let button = document.querySelector("#btnCheck + button");
+    //2. 객체(속성,스타일,텍스트,이벤트)
+    btnCheck.addEventListener("change");
+  </script>
+</body>
+</html>

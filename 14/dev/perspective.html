@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .wrap{
+      height: 100vh;
+      background-color: beige;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
+    .origin{
+      border: 1px solid black;
+    }
+    .origin > div {
+      transition: all 3s cubic-bezier(0,1.63,1,-1.49);
+    }
+    .rotatex:hover{
+      transform: rotatex(45deg);
+    }
+    .rotatey:hover{
+      transform: rotatex(45deg);
+    }
+    .prespect{
+      perspective:500px;
+    }
+    .rotatez:hover{
+      transform: rotatez(720deg);
+
+    }
+    .rotate3d:hover{
+      transform: rotate3d(2.5, 1.2, -1.5, 55deg);
+
+    }
+
+
+  </style>
+</head>
+<div class="wrap">
+<body>
+  <div class = "origin prespect">
+    <div class="rotatex">
+      <img src="./../dev/image/sunset.jpg " alt="노을하늘"> 
+    </div>
+  </div>
+  
+<body>
+  <div class = "origin prespect">
+    <div class="rotatey">
+      <img src="./../dev/image/sunset.jpg " alt="노을하늘"> 
+    </div>
+  </div>
+  <div class = "origin prespect">
+    <div class="rotatez">
+      <img src="./../dev/image/sunset.jpg " alt="노을하늘"> 
+    </div>
+  </div>
+  <div class = "origin prespect">
+    <div class="rotate3d">
+      <img src="./../dev/image/sunset.jpg " alt="노을하늘"> 
+    </div>
+  </div>
+  </div>
+</body>
+</html>

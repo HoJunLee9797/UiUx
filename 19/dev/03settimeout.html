@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container{
+      width: 600px;
+      height: 300px;
+      margin: 30px auto;
+      border: 3px dotted red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      GAP:10px;
+    }
+    button{
+      display:block;
+      width:100px;
+      height: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button id = "btnStart">time시작</button>
+    <button id = "btnStop">time종료</button>
+
+
+  </div>
+  <script>
+    let btnStart=document.querySelector("#btnStart");
+    let btnStop=document.querySelector("#btnStop");
+
+    //setTimeout() 핸드폰 알람설정 10초후 알람(단일신호)
+    //setInterval() 핸드폰 알람설정 10초후 알람(지속신호)
+    btnStart.addEventListener("click",startFunc,false);
+    btnStop.addEventListener("click",startFunc,false);
+
+    function startFunc(){
+     //timeId = settimeout(()=>{console.log('알람발생')},3000);
+     timeId = setInterval(()=>{window.alert('최근전적 창수형 1승 2무 민우 3승 0패 ^_^')},500);
+    };
+
+    function stopFunc(){
+      console.log("알람해제");
+      clearTimeout(timeId);
+      clearInterval(timeId);
+    }
+  </script>
+</body>
+</html>

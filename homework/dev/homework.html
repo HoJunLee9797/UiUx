@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    body {
+      font-family: sans-serif;
+    }
+
+    h1 {
+      font-size: x-small;
+      text-align: right;
+      margin: 10px 30px 0 0;
+      color: #666;
+    }
+
+    table,
+    td {
+      border-top: 1px solid rgb(174, 174, 174);
+      border-bottom: 1px solid rgb(174, 174, 174);
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    td {
+      padding: 10px 10px;
+      vertical-align: top;
+    }
+
+    div {
+      margin-left: 30px;
+    }
+
+    input,
+    textarea {
+      background-color: rgb(226, 226, 226, 0.3);
+      border: 1px solid rgb(188, 188, 188);
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 60%;
+      min-width: 200px;
+      height: 25px;
+    }
+
+    textarea {
+      resize: none;
+      width: 200px;
+      height: 80px;
+    }
+
+    .buttons {
+      text-align: center;
+    }
+
+    .buttons button {
+      width: 100px;
+      height: 35px;
+      margin: 20px 10px 40px 10px;
+      font-size: 13px;
+    }
+
+    .submit-btn {
+      background-color: rgb(255, 53, 154);
+      color: white;
+      border: none;
+    }
+
+    .reset-btn {
+      background-color: #eee;
+      border: none;
+    }
+
+    .address-group input {
+      margin-bottom: 5px;
+    }
+
+    .address-group button {
+      background-color: black;
+      color: white;
+      margin-left: 10px;
+      height: 25px;
+      padding: 0 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .label-bold {
+      font-weight: bold;
+    }
+
+    .section-title {
+      margin-top: 20px;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>2025. 05. 15 이호준　127.0.0.1/login.htm</h1>
+  <div class="signUp" style="width: 50%;">
+    <form method="get" action="#">
+      <h3 style="text-align: center; margin-top: 20px; margin-bottom: 5px;">회 원 가 입</h3>
+
+      <h5 class="section-title">사이트 이용정보 입력</h5>
+      <table style="width: 100%; margin-bottom: 30px;">
+        <colgroup>
+          <col style="background-color: rgb(226, 226, 226, 0.3); width: 15%;">
+          <col>
+        </colgroup>
+        <tr>
+          <td class="label-bold">아이디</td>
+          <td>
+            영문자, 숫자, _만 입력 가능. 최소 3자이상 입력하세요.<br>
+            <input type="text" name="id" id="id" minlength="3">
+          </td>
+        </tr>
+        <tr>
+          <td class="label-bold">비밀번호</td>
+          <td><input type="password" name="pw" id="pw"></td>
+        </tr>
+        <tr>
+          <td class="label-bold">비밀번호 확인</td>
+          <td><input type="password" name="pwCheck" id="pwCheck"></td>
+        </tr>
+      </table>
+
+      <h5 class="section-title">개인정보 입력</h5>
+      <table style="width: 100%; margin-bottom: 30px;">
+        <colgroup>
+          <col style="background-color: rgb(226, 226, 226, 0.3); width: 15%;">
+          <col>
+        </colgroup>
+        <tr>
+          <td class="label-bold">이름</td>
+          <td><input type="text" name="name" id="name"></td>
+        </tr>
+        <tr>
+          <td class="label-bold">닉네임</td>
+          <td>
+            공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)<br>
+            닉네임을 바꾸시면 앞으로 1일 이내에는 변경 할 수 없습니다.<br>
+            <input type="text" name="nickname" id="nickname">
+          </td>
+        </tr>
+        <tr>
+          <td class="label-bold">E-mail</td>
+          <td><input type="email" name="email" id="email"></td>
+        </tr>
+        <tr>
+          <td class="label-bold">가입경로</td>
+          <td>
+            <label><input type="radio" name="path"> 인터넷검색</label>
+            <label><input type="radio" name="path"> 배너광고</label>
+            <label><input type="radio" name="path"> 관련기사를보고</label>
+            <label><input type="radio" name="path"> 미라지홈페이지보고</label>
+            <label><input type="radio" name="path"> 주변사람소개</label>
+            <label><input type="radio" name="path"> 기타</label>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-bold">전화번호</td>
+          <td><input type="tel" name="tel" id="tel"></td>
+        </tr>
+        <tr>
+          <td class="label-bold">휴대폰번호</td>
+          <td><input type="tel" name="phoneNum" id="phoneNum"></td>
+        </tr>
+        <tr>
+          <td class="label-bold">생년월일</td>
+          <td><input type="text" name="birthDay" id="birthDay"></td>
+        </tr>
+        <tr>
+          <td class="label-bold">주소</td>
+          <td class="address-group">
+            <input type="text" name="add1" id="add1" style="width: 20%;">
+            <button type="button">주소 검색</button><br>
+            <input type="text" name="add2" id="add2" style="width: 50%;"> 기본주소<br>
+            <input type="text" name="add3" id="add3" style="width: 50%;"> 상세주소<br>
+            <input type="text" name="add4" id="add4" style="width: 50%;"> 참고항목<br>
+          </td>
+        </tr>
+      </table>
+
+      <h5 class="section-title">기타 개인설정</h5>
+      <table style="width: 100%;">
+        <colgroup>
+          <col style="background-color: rgb(226, 226, 226, 0.3); width: 15%;">
+          <col>
+        </colgroup>
+        <tr>
+          <td class="label-bold">카카오톡 메세지</td>
+          <td>
+            <label><input type="checkbox" name="receiveMsg"> 카카오톡 메세지를 받겠습니다.</label>
+            <span style="color: red;"> > 수신체크를 하시면 세일 소식을 가장 먼저 받아보실 수 있습니다. </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-bold">메일링서비스</td>
+          <td><input type="checkbox" name="receiveEmail"> 정보 메일을 받겠습니다.</td>
+        </tr>
+        <tr>
+          <td class="label-bold">SMS 수신여부</td>
+          <td><input type="checkbox" name="receiveSMS"> 휴대폰 문자메세지를 받겠습니다.</td>
+        </tr>
+        <tr>
+          <td class="label-bold">정보공개</td>
+          <td>
+            정보공개를 바꾸시면 앞으로 0일 이내에는 변경이 안됩니다.<br>
+            <input type="checkbox" name="openInfo"> 다른분들이 나의 정보를 볼 수 있도록 합니다.
+          </td>
+        </tr>
+        <tr>
+          <td class="label-bold">자동등록방지</td>
+          <td>
+            <img src="./image/Gihun.jpg" alt="자동등록방지 이미지"><br>
+            <textarea name="checkHuman" id="checkHuman" placeholder="숫자를 입력하세요."></textarea><br>
+            자동등록방지 숫자를 순서대로 입력하세요.
+          </td>
+        </tr>
+      </table>
+
+      <div class="buttons">
+        <button type="submit" class="submit-btn">회원가입</button>
+        <button type="reset" class="reset-btn">취소</button>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+<body>
+
+  <script>
+    // 배열선언 (2개 numArray, charArray) : 배열끼리 합치는 기능 concat()
+    let numArray = [1,2,3];
+    let charArray = ["a","b","c","d"];
+    document.write(`<h1>numArray = ${numArray} </h1><br>`);
+    document.write(`<h1>charArray = ${charArray.toString()} </h1><br>`);
+    document.write(`<hr>`);
+    let numCharArray = numArray.concat(charArray);
+    document.write(`<h1>numCharArray = ${numCharArray} </h1><br>`);
+    let charNumArray = charArray.concat(numArray);
+    document.write(`<h1>charNumArray = ${charNumArray} </h1><br>`);
+    document.write(`<hr>`);
+    // 배열 요소끼리 합치는 기능 join() charArray를 join을 해서 문자열로 만들어 보겠습니다.
+    let strCharArray = charArray.join()
+    document.write(`<h1>strCharArray = ${strCharArray} </h1><br>`);
+    let joinCharArray = charArray.join("/")
+    document.write(`<h1>joinCharArray = ${joinCharArray} </h1><br>`);
+    document.write(`<hr>`);
+    // 배열에 ArrayList처럼 내용을 뒤에다 추가하는 기능(push)
+    // 현재 numArray 배열안에 잇는건 let numArray = [1,2,3];
+    let countArray = numArray.push(10,20);
+    document.write(`<h1>countArray = ${countArray} </h1><br>`);
+    document.write(`<h1>numArray = ${numArray} </h1><br>`);
+    document.write(`<hr>`);
+    // 배열에 ArrayList처럼 내용을 앞에다 추가하는 기능(unshift)
+    // 현재 numArray 배열안에 잇는건 let numArray = [1,2,3,10,20];
+    let count2Array = numArray.unshift(100,200);
+    document.write(`<h1>count2Array = ${count2Array} </h1><br>`);
+    document.write(`<h1>numArray = ${numArray} </h1><br>`);
+    document.write(`<hr>`);
+    // 배열에 ArrayList처럼 내용을 삭제하는 기능(pop)
+    let count3 = numArray.pop();
+    document.write(`<h1>count2Array = ${count2Array} </h1><br>`);
+    document.write(`<h1>numArray = ${numArray} </h1><br>`);
+    document.write(`<hr>`);
+    //배열에 ArrayList처럼 중간에서 삭제 기능(splice)
+    //let charArray = ["a","b","c","d"];
+    let spliceArray = charArray.splice(2);
+     document.write(`<h1>spliceArray = ${spliceArray} </h1><br>`);
+    document.write(`<h1>charArray = ${charArray} </h1><br>`);
+    document.write(`<hr>`);
+    // 배열에 ArrayList처럼 중간에서 삽입 기능 (splice)
+     let spliceArray2 = charArray.splice(1,0,"k");
+      document.write(`<h1>spliceArray2 = ${spliceArray2} </h1><br>`);
+    document.write(`<h1>charArray = ${charArray} </h1><br>`);
+    document.write(`<hr>`);
+    // 배열내용은 그대로이고 내가 원하는 데이터 가져간다 slice()
+    //let charArray = ["a","k","b","d"];
+     let sliceArray2 = charArray.slice(2,4);
+      document.write(`<h1>spliceArray = ${spliceArray} </h1><br>`);
+    document.write(`<h1>charArray = ${charArray} </h1><br>`);
+    document.write(`<hr>`);
+  </script>
+</body>
+</html>

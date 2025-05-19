@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  body {
+    background-color: #f7f5dc;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wrap {
+    width: 500px;
+    padding: 20px;
+    border: 1px solid black;
+    background-color: #faf9f6;
+  }
+
+  fieldset {
+    border: none;
+  }
+
+  ul.input-area {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+
+  ul.input-area li {
+    margin-bottom: 10px;
+  }
+
+  ul.butc {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  ul.butc li {
+    margin: 0;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+</style>
+
+</head>
+<body>
+  <body>
+  <div class="wrap">
+    <fieldset>
+      <legend></legend>
+      <ul class="input-area">
+        <li>x <input type="text" name="x" id="x" size="28"></li>
+        <li>y <input type="text" name="y" id="y" size="28"></li>
+        <li>결과 <input type="text" name="result" id="result" size="28" readonly></li>
+      </ul>
+
+      <ul class="butc">
+        <li><button id="Addition">+</button></li>
+        <li><button id="Subtraction">-</button></li>
+        <li><button id="Multiplication">*</button></li>
+        <li><button id="Division">/</button></li>
+        <li><button id="clear">clear</button></li>
+      </ul>
+    </fieldset>
+  </div>
+</body>
+
+<script>
+  const xInput = document.querySelector("#x");
+  const yInput = document.querySelector("#y");
+  const resultInput = document.querySelector("#result");
+
+  const addBtn = document.querySelector("#Addition");
+  const subBtn = document.querySelector("#Subtraction");
+  const mulBtn = document.querySelector("#Multiplication");
+  const divBtn = document.querySelector("#Division");
+  const clearBtn = document.querySelector("#clear");
+
+  addBtn.onclick = () => {
+    let x = Number(xInput.value);
+    let y = Number(yInput.value);
+    resultInput.value = x + y;
+  };
+
+  subBtn.onclick = () => {
+    let x = Number(xInput.value);
+    let y = Number(yInput.value);
+    resultInput.value = x - y;
+  };
+
+  mulBtn.onclick = () => {
+    let x = Number(xInput.value);
+    let y = Number(yInput.value);
+    resultInput.value = x * y;
+  };
+
+  divBtn.onclick = () => {
+    let x = Number(xInput.value);
+    let y = Number(yInput.value);
+    if (y === 0) {
+      alert("0으로 나눌 수 없습니다!");
+      resultInput.value = "";
+    } else {
+      resultInput.value = x / y;
+    }
+  };
+
+  clearBtn.onclick = () => {
+    xInput.value = "";
+    yInput.value = "";
+    resultInput.value = "";
+  };
+</script>
+
+
+</body>
+</html>
